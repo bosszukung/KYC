@@ -1,7 +1,7 @@
 import { Roles } from './Roles'; 
 
 export function getUserType() {
-    const address = localStorage.getItem('account');
+    const address = localStorage.getItem('address');
     if (!address) {
       return null;
     }

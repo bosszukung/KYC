@@ -56,6 +56,7 @@ export function useAuth() {
                 return navigate((state.state)?.from || '/');
             }
             dispatch(setLoginStatus(true));
+            console.log(typeof setLoginStatus)
           }
         } else {
           Error('account has not found')
@@ -77,19 +78,28 @@ export function useAuth() {
             switch (currentUserRole) {
               case "Admin":
                 navigate((state.state)?.from ||"/admin");
+                dispatch(setLoginStatus(true));
+                dispatch(setUserDetails({ address: accounts, role: currentUserRole }));
+                dispatch(setLoading(false));
                 break;
               case "FI":
                 navigate((state.state)?.from || "/user");
+                dispatch(setLoginStatus(true));
+                dispatch(setUserDetails({ address: accounts, role: currentUserRole }));
+                dispatch(setLoading(false));
                 break;
               case "Client":
                 navigate((state.state)?.from || "/client");
+                dispatch(setLoginStatus(true));
+                dispatch(setUserDetails({ address: accounts, role: currentUserRole }));
+                dispatch(setLoading(false));
                 break;
               default:
                 return navigate((state.state)?.from || '/');
           }
-          dispatch(setUserDetails({ address: accounts, role: currentUserRole }));
-          dispatch(setLoginStatus(true));
-          dispatch(setLoading(false));
+          
+          console.log(setLoginStatus)
+          
         }
       }
     } catch (error) {
@@ -100,27 +110,13 @@ export function useAuth() {
     }
   }, [dispatch, navigate, state.state?.from]);
 
-
-  // const disConnect = useCallback(async function disConnect() {
-  //   dispatch(resetStates());
-  //   dispatch(setLoginStatus(false));
-  //   navigate((state.state)?.from || '/')
-  // }, [dispatch, navigate, state.state?.from]);
-
   const disConnect = useCallback(async function disConnect() {
-    try {
-      if (web3 && web3.currentProvider && web3.currentProvider.disconnect) {
-        await web3.currentProvider.disconnect();
-      }
-      web3 = undefined;
-      dispatch(resetStates());
-      dispatch(setLoginStatus(false));
-      navigate((state.state)?.from || '/');
-    } catch (error) {
-      console.log(error);
-      Error('Error while trying to disconnect');
-    }
+    dispatch(resetStates());
+    dispatch(setLoginStatus(false));
+    console.log(setLoginStatus)
+    navigate((state.state)?.from || '/')
   }, [dispatch, navigate, state.state?.from]);
+
   
   
 

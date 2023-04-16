@@ -15,22 +15,6 @@ const InitialStateType = {
   data: [Client, FI, User, KYCRequest], 
   fetchedData: FetchedDataType
 };
-// assert(typeof InitialStateType.userDetails === 'object' && 
-// InitialStateType.userDetails instanceof User);
-// assert(typeof InitialStateType.isUserLoggedIn === 'boolean');
-// assert(typeof InitialStateType.loading === 'boolean');
-// assert(typeof InitialStateType.pageNo === 'number');
-// assert(typeof InitialStateType.totalPageNumber === 'number');
-// assert(Array.isArray(InitialStateType.data));
-// for (const item of InitialStateType.data) {
-//   assert(
-//       item instanceof Client || 
-//       item instanceof FI || 
-//       item instanceof User || 
-//       item instanceof KYCRequest
-//   );
-// };
-// assert(typeof InitialStateType.fetchedData === 'object');
 
 
 const ActionMap = (obj) => { 
@@ -41,27 +25,8 @@ const ActionMap = (obj) => {
         actionMap[key] = val === undefined 
         ? { type: key }
         : {type: key, payload: val};
-
-        // assert(
-        //     typeof actionMap[key].type === 'string'
-        // );
-        // assert(
-        //     typeof actionMap[key].payload === 'undefined' || 
-        //     typeof actionMap[key].payload === 'object'
-        // );
     }
   }
-
-  // assert(
-  //     Object.keys(actionMap).every(
-  //         (k) => obj.hasOwnProperty(k)
-  //     )
-  // );
-  // assert(
-  //     Object.keys(obj).every(
-  //         (k) => actionMap.hasOwnProperty(k)
-  //     )
-  // );
 
   return actionMap;
 };
@@ -81,30 +46,7 @@ const AuthPayload = {
   },
   [AUTH.RESET]: undefined
 };
-// assert(typeof AuthPayload[AUTH.SET_USER_DETAILS] === 'object' && 
-// AuthPayload[AUTH.SET_USER_DETAILS] instanceof User);
-// assert(typeof AuthPayload[AUTH.SET_LOGIN_STATUS] === 'boolean');
-// assert(typeof AuthPayload[AUTH.SET_LOADING] === 'boolean');
-// // for (const item of AuthPayload[AUTH.SET_DATA].data) {
-// //   assert(
-// //       item instanceof Client || 
-// //       item instanceof FI || 
-// //       item instanceof User || 
-// //       item instanceof KYCRequest
-// //   );
-// // }
-// assert(typeof AuthPayload[AUTH.SET_DATA].Totalpages === 'number');
-// assert(typeof AuthPayload[AUTH.SET_DATA].currentPage === 'number');
-// assert(typeof AuthPayload[AUTH.SET_FETCHED_DATA].pageNo === 'string');
-// assert(Array.isArray(AuthPayload[AUTH.SET_FETCHED_DATA].data));
-// for (const item of AuthPayload[AUTH.SET_FETCHED_DATA].data) {
-//   assert(
-//       item instanceof Client || 
-//       item instanceof FI || 
-//       item instanceof User || 
-//       item instanceof KYCRequest
-//   );
-// }
+
 assert(AuthPayload[AUTH.RESET] === undefined);
 
 const authActions = Object.keys(ActionMap(AuthPayload)).map(

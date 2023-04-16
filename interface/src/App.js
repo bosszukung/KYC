@@ -30,20 +30,26 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginButton />} />
 
-        <Route path='/admin' element={<Admin setShowNavbar={setShowNavbar} showNavbar={false} />}>
-          <Route path='/admin' element={<ADashboard/>} />
-          <Route path='fi' element={<FIT />} />
-          <Route path='apie' element={<APie />} />
+        <Route element={<PrivateRoute allowedRoles={['Admin']}/>}> 
+          <Route path='/admin' element={<Admin setShowNavbar={setShowNavbar} showNavbar={false} />}>
+            <Route path='/admin' element={<ADashboard/>} />
+            <Route path='fi' element={<FIT />} />
+            <Route path='apie' element={<APie />} />
+          </Route>
         </Route>
 
-        <Route path='/user' element={<User setShowNavbar={setShowNavbar} showNavbar={false} />}>
-          <Route path='/user' element={<UDashboard/>} />
-          <Route path='upie' element={<UPie />} />
+        <Route element={<PrivateRoute allowedRoles={['FI']}/>}>
+          <Route path='/user' element={<User setShowNavbar={setShowNavbar} showNavbar={false} />}>
+            <Route path='/user' element={<UDashboard/>} />
+            <Route path='upie' element={<UPie />} />
+          </Route>
         </Route>
 
-        <Route path='/client' element={<Client setShowNavbar={setShowNavbar} showNavbar={false} />}>
-          <Route path='/client' element={<CDashboard/>} />
-          <Route path='cpie' element={<CPie />} />
+        <Route element={<PrivateRoute allowedRoles={['Client']}/>}>
+          <Route path='/client' element={<Client setShowNavbar={setShowNavbar} showNavbar={false} />}>
+            <Route path='/client' element={<CDashboard/>} />
+            <Route path='cpie' element={<CPie />} />
+          </Route>
         </Route>
 
       </Routes> 
