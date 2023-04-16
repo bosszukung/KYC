@@ -1,15 +1,26 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
-import {getUserType} from '../userType';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
+import { getUserType } from '../userType';
+import { useAuthContext } from '../../../Context';
 
-function PrivateRoute({ element: Component, userType, ...rest }) {
-  if (getUserType() !== userType) {
-    // If the user type doesn't match, redirect to the login page
-    return <Navigate to="/login" />;
+function PrivateRoute({ allowedRoles }) {
+  const { state: { isUserLoggedIn } } = useAuthContext();
+  const { pathname, search } = useLocation();
+  const userType = getUserType();
+
+  if (!userType || !allowedRoles.includes(userType)) {
+    return <Navigate replace to="/login" />;
   }
 
-  // If the user type matches, render the specified component
-  return <Route {...rest} element={<Component />} />;
+  return isUserLoggedIn ? (
+    <Outlet />
+  ) : (
+    <Navigate 
+      replace 
+      to={{ pathname: '/', state: { from: `${pathname}${search}` } }}
+    />
+  );
 }
 
 export default PrivateRoute;
+
