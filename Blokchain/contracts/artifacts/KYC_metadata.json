@@ -1,0 +1,1230 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "ClientAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "ClientDataUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "SwiftCode",
+						"type": "string"
+					}
+				],
+				"name": "FIadded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIdeactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "FIupdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "iDreq",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "FIName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "ClinetName",
+						"type": "string"
+					}
+				],
+				"name": "addKYC",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "iDreq",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "Client_ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "FI_ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum appearances.KYCStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"name": "changeStatus",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "clientName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "dataHash",
+						"type": "string"
+					}
+				],
+				"name": "dataHashUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "iDreq",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "Client_ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "FI_ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum appearances.DataHashStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"name": "dataHashpermission",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "iDreq",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "FIName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "ClientName",
+						"type": "string"
+					}
+				],
+				"name": "startKYC",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "MakeActive",
+						"type": "bool"
+					}
+				],
+				"name": "ActiveteandDeactivete",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "fiAdd",
+						"type": "tuple"
+					}
+				],
+				"name": "AddFIAccount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "MobileNumber",
+								"type": "uint16"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "VerifiedBy",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "dataUpdated",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct appearances.Client",
+						"name": "client",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Timestemp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"name": "AddKYC",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pageNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "AllFI",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "Totalpages",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIUpdate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pageNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "FIrequest",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "Totalpages",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ID",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "user_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "ClientName",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "FI_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "FIName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "updatedOn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum appearances.KYCStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum appearances.DataHashStatus",
+								"name": "dataRequest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "additionalNotes",
+								"type": "string"
+							}
+						],
+						"internalType": "struct appearances.KYCRequest[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user_ID",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "verified",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"name": "KYCVerification",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "FI_ID",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "approve",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"name": "KYCaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkIt",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "enum appearances.Positions",
+								"name": "positions",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.User",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pageNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "getClientofFI",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "Totalpages",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ID",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "user_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "ClientName",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "FI_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "FIName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "updatedOn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum appearances.KYCStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum appearances.DataHashStatus",
+								"name": "dataRequest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "additionalNotes",
+								"type": "string"
+							}
+						],
+						"internalType": "struct appearances.KYCRequest[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					}
+				],
+				"name": "getFIDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					}
+				],
+				"name": "gettheClientDetials",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "MobileNumber",
+								"type": "uint16"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "VerifiedBy",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "dataUpdated",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct appearances.Client",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"name": "reKYC",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "FI_ID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "note",
+						"type": "string"
+					}
+				],
+				"name": "removePremission",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					}
+				],
+				"name": "searchClient",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "MobileNumber",
+								"type": "uint16"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "VerifiedBy",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "dataUpdated",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct appearances.Client",
+						"name": "",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ID",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "user_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "ClientName",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "FI_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "FIName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "updatedOn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum appearances.KYCStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum appearances.DataHashStatus",
+								"name": "dataRequest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "additionalNotes",
+								"type": "string"
+							}
+						],
+						"internalType": "struct appearances.KYCRequest",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "FI_ID",
+						"type": "address"
+					}
+				],
+				"name": "searchforFI",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ID",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "user_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "ClientName",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "FI_ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "FIName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "dataHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "updatedOn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum appearances.KYCStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum appearances.DataHashStatus",
+								"name": "dataRequest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "additionalNotes",
+								"type": "string"
+							}
+						],
+						"internalType": "struct appearances.KYCRequest",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Timestemp",
+						"type": "uint256"
+					}
+				],
+				"name": "updateHash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"internalType": "uint16",
+						"name": "MobileNumber",
+						"type": "uint16"
+					}
+				],
+				"name": "updateProfile",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Desktop/Dissertation/KYC/Blokchain/contracts/KYC.sol": "KYC"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol": {
+			"keccak256": "0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e",
+				"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Client.sol": {
+			"keccak256": "0xe3526db79c183fb2a6e53a9e75ed9f70f7f98fe8b355234fa9c4f0b05cd5e7b6",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://30bfd4dc76854b8c22574a8276b58d5e3177a14b073b3bedf06227c5e9c3159c",
+				"dweb:/ipfs/QmSr1tY8Zddd4gVL6hM2hrzRQ7Wr3uEBEb9B9w6MgN6HEu"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/FI.sol": {
+			"keccak256": "0xb2acc26aa8b3ad50757c5691747db56639388ee86a33a91eb8b8b2e3a93c7410",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://1854835e5abd18c3a943d135f37879a5240d254402f54bbe2c6e010d390b402f",
+				"dweb:/ipfs/QmQbUG2qtc1giWScxvqarVtsj26jL8GoZy3AhAvMr7dw71"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/KYC.sol": {
+			"keccak256": "0xe009c741dfc1743a24dcfb8621a731a2c7e16b7c264d7feb59b6262dd09d2923",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://56308fde6ce0c74e719752beab3223e3716658d362fada17fa179a1fb19f51f8",
+				"dweb:/ipfs/QmcXGENrpBj9yjP5EUPoD4ZDPzLsMJZqr5oKMoe32eZWMm"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Support.sol": {
+			"keccak256": "0xaeadca47af845d5085a7df277acd27cfd874660940f19b20b66c1e8b0b3105c6",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://136914fb50228b178b37bb7597ef679ae3727b5baadcc43d34a82040944e3dfe",
+				"dweb:/ipfs/QmeGAEJgYTDimrqfAUAYiu5sJA1g2NgRMGESTKo5Si2Jgm"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,41 @@
+{
+	"compiler": {
+		"version": "0.6.0+commit.26b70077"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Support for the efficient management of auxiliary functions List of customers who are associated with the present financial institution To avoid incurring higher gas fees, the data is paginated when sending it."
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Desktop/Dissertation/KYC/Blokchain/contracts/Support.sol": "support"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Support.sol": {
+			"keccak256": "0xaeadca47af845d5085a7df277acd27cfd874660940f19b20b66c1e8b0b3105c6",
+			"urls": [
+				"bzz-raw://136914fb50228b178b37bb7597ef679ae3727b5baadcc43d34a82040944e3dfe",
+				"dweb:/ipfs/QmeGAEJgYTDimrqfAUAYiu5sJA1g2NgRMGESTKo5Si2Jgm"
+			]
+		}
+	},
+	"version": 1
+}

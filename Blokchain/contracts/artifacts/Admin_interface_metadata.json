@@ -1,0 +1,405 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "ClientAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "ClientDataUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "SwiftCode",
+						"type": "string"
+					}
+				],
+				"name": "FIadded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIdeactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "FIupdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "clientName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "dataHash",
+						"type": "string"
+					}
+				],
+				"name": "dataHashUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "MakeActive",
+						"type": "bool"
+					}
+				],
+				"name": "ActiveteandDeactivete",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "fiAdd",
+						"type": "tuple"
+					}
+				],
+				"name": "AddFIAccount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pageNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "AllFI",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "Totalpages",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "ID",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "SwiftCode",
+								"type": "string"
+							},
+							{
+								"internalType": "uint16",
+								"name": "KYCCount",
+								"type": "uint16"
+							},
+							{
+								"internalType": "enum appearances.FIStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct appearances.FI",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIUpdate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Desktop/Dissertation/KYC/Blokchain/contracts/Admin.sol": "Admin_interface"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Admin.sol": {
+			"keccak256": "0xc4d27e9d57dff8d691a7cc372331dba3978383077c81d2d4ce78db0af78d69fb",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://95e0279eba7f7affcaa2fbaa739965687f5baa653bace3d520f69c2b7cc6107f",
+				"dweb:/ipfs/QmRThoMubFqajobbSLQmLN3F5UQvLNmUjPN4TupoYCWm2t"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol": {
+			"keccak256": "0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e",
+				"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Client.sol": {
+			"keccak256": "0xb94624ad75a31b4d575d06dd185c4aabadd3e991b8e6cb1468a6d45417e7f214",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://1267990086cf870d2003caf906008f4b7c616a119b22568c0ccb22e8d5b0d2e7",
+				"dweb:/ipfs/QmVN2k8F7547Mvx3g62WSmkekwcZStNJtLBfk4nEX3j5yn"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/FI.sol": {
+			"keccak256": "0x16a949c2956b35b96b167c96fdc4916c7b739bf67c10ac7c8241b0792388615c",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://62ed3f7d873bef52a36e29591f2523c7f80a02459b10f3daaa7b12940e20b64c",
+				"dweb:/ipfs/QmRHE9UJhgXMqry5396F2Bpz53m5i2emPHmn8dcLH2KbcZ"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Support.sol": {
+			"keccak256": "0x06feed94071e370d4a58f78b682a65243f1d8ab08bc7f9b8e66d24fecf47d6fc",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://5a631ede203adf3616e860c8214797013d54942d534a18e4620eb2ab032d1d6c",
+				"dweb:/ipfs/Qmf6mYFvmKkGgX5f9QYMUkFRRmJYwHT2HkkipmZaCANESR"
+			]
+		}
+	},
+	"version": 1
+}

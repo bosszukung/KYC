@@ -1,0 +1,156 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "SwiftCode",
+						"type": "string"
+					}
+				],
+				"name": "FIadded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "FIdeactivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ID",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					}
+				],
+				"name": "FIupdated",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Desktop/Dissertation/KYC/Blokchain/contracts/FI.sol": "FI"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol": {
+			"keccak256": "0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e",
+				"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/FI.sol": {
+			"keccak256": "0x16a949c2956b35b96b167c96fdc4916c7b739bf67c10ac7c8241b0792388615c",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://62ed3f7d873bef52a36e29591f2523c7f80a02459b10f3daaa7b12940e20b64c",
+				"dweb:/ipfs/QmRHE9UJhgXMqry5396F2Bpz53m5i2emPHmn8dcLH2KbcZ"
+			]
+		},
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Support.sol": {
+			"keccak256": "0x06feed94071e370d4a58f78b682a65243f1d8ab08bc7f9b8e66d24fecf47d6fc",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://5a631ede203adf3616e860c8214797013d54942d534a18e4620eb2ab032d1d6c",
+				"dweb:/ipfs/Qmf6mYFvmKkGgX5f9QYMUkFRRmJYwHT2HkkipmZaCANESR"
+			]
+		}
+	},
+	"version": 1
+}
