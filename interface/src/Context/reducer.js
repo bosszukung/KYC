@@ -1,5 +1,6 @@
 import { InitialState } from "./details";
 
+
 export function authReducer(state, action) {
 
   switch (action.type) {

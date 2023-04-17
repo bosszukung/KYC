@@ -5,14 +5,12 @@ export function getUserType() {
     if (!address) {
       return null;
     }
-    
-    let userType = null;
     try {
-      userType = Roles.get(address);
+      return Roles.get(address) || null ;
     } catch (error) {
       console.error('An error occurred while retrieving the user type:', error);
+      return null;
     }
   
-    return userType;
 }
 

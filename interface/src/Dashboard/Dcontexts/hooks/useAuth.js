@@ -45,27 +45,29 @@ export function useAuth() {
             switch (currentUserRole) {
               case "Admin":
                 navigate((state.state)?.from ||"/admin");
+                dispatch(setLoginStatus(true));
                 break;
               case "FI":
                 navigate((state.state)?.from || "/user");
+                dispatch(setLoginStatus(true));
                 break;
               case "Client":
                 navigate((state.state)?.from || "/client");
+                dispatch(setLoginStatus(true));
                 break;
               default:
                 return navigate((state.state)?.from || '/');
             }
-            dispatch(setLoginStatus(true));
-            console.log(typeof setLoginStatus)
           }
         } else {
           Error('account has not found')
+        }
+      } catch (error) {
+        console.log(error);
+        Error("Error while trying to login");
       }
-    } catch (error) {
-      console.log(error);
-      Error("Error while trying to login");
-    }
-  }, [dispatch, navigate, state.state?.from]);
+    }, [dispatch, navigate, state.state?.from]
+  );
 
   const getAccounts = useCallback(async function getAccounts() {
     try{
@@ -96,19 +98,17 @@ export function useAuth() {
                 break;
               default:
                 return navigate((state.state)?.from || '/');
+            }
           }
-          
-          console.log(setLoginStatus)
-          
         }
+      } catch (error) {
+        console.log(error);
+        Error('Error while trying to retrive your account');
+      } finally {
+        dispatch(setLoading(false));
       }
-    } catch (error) {
-      console.log(error);
-      Error('Error while trying to retrive your account');
-    } finally {
-      dispatch(setLoading(false));
-    }
-  }, [dispatch, navigate, state.state?.from]);
+    }, [dispatch, navigate, state.state?.from]
+  );
 
   const disConnect = useCallback(async function disConnect() {
     dispatch(resetStates());
@@ -116,9 +116,6 @@ export function useAuth() {
     console.log(setLoginStatus)
     navigate((state.state)?.from || '/')
   }, [dispatch, navigate, state.state?.from]);
-
-  
-  
 
   return {
     connect,

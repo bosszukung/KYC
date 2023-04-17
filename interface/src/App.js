@@ -30,27 +30,27 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginButton />} />
 
-        <Route element={<PrivateRoute allowedRoles={['Admin']}/>}> 
+        <Route element={<PrivateRoute allowedRoles={["Admin"]}></PrivateRoute>}>  
           <Route path='/admin' element={<Admin setShowNavbar={setShowNavbar} showNavbar={false} />}>
             <Route path='/admin' element={<ADashboard/>} />
             <Route path='fi' element={<FIT />} />
             <Route path='apie' element={<APie />} />
           </Route>
-        </Route>
+        </Route> 
 
-        <Route element={<PrivateRoute allowedRoles={['FI']}/>}>
+        {/* <Route element={<PrivateRoute allowedRoles='FI'/>}> */}
           <Route path='/user' element={<User setShowNavbar={setShowNavbar} showNavbar={false} />}>
             <Route path='/user' element={<UDashboard/>} />
             <Route path='upie' element={<UPie />} />
           </Route>
-        </Route>
+        {/* </Route> */}
 
-        <Route element={<PrivateRoute allowedRoles={['Client']}/>}>
+        {/* <Route element={<PrivateRoute allowedRoles='Client'/>}> */}
           <Route path='/client' element={<Client setShowNavbar={setShowNavbar} showNavbar={false} />}>
             <Route path='/client' element={<CDashboard/>} />
             <Route path='cpie' element={<CPie />} />
           </Route>
-        </Route>
+        {/* </Route> */}
 
       </Routes> 
     </Router>
