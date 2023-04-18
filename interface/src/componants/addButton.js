@@ -12,7 +12,7 @@ export const AddButton = ({
         <Pressable onPress={() => navigate(route)}>
             <div className='press'>
                 <AddCircleOutlineIcon className='icon' />
-                <p className='text'>Add</p>
+                <span className='text'>Add</span>
             </div>
         </Pressable>
     )

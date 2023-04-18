@@ -1,0 +1,23 @@
+.count {
+    background-color: white;
+    max-width: 400px, 300px;
+    margin-bottom: 2;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    display: flex;
+   
+}
+
+.format {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #F6E05E;
+    padding: 8px
+}
+.heading {
+    font-size: 1.125rem;
+    color: #9CA3AF;
+    font-weight: 600;
+    text-transform: uppercase;
+}
