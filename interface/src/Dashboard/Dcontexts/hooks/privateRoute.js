@@ -3,7 +3,7 @@ import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext} from '../../../Context';
 
 
-function PrivateRoute({ role }) {
+function PrivateRoute() {
   const { state: { isUserLoggedIn},
 } = useAuthContext();
   const { pathname, search } = useLocation();
