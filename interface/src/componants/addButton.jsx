@@ -13,6 +13,7 @@ export const AddButton = ({
             <div className='press'>
                 <AddCircleOutlineIcon className='icon' />
                 <span className='text'>Add</span>
+                {add}
             </div>
         </Pressable>
     )

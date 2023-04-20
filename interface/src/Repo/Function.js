@@ -46,7 +46,7 @@ export class Client {
 }
 
 export class User {
-  constructor(name, email, ID, position, status) {
+  constructor(name, email, ID, position, status=FIStatus) {
     this.name = name;
     this.email = email;
     this.ID = ID;
@@ -64,7 +64,7 @@ export class User {
 }
 
 export class FI {
-  constructor(name, email, ID, SwiftCode, KYCCount, status) {
+  constructor(name, email, ID, SwiftCode, KYCCount, status=FIStatus) {
     this.name = name;
     this.email = email;
     this.ID = ID;
@@ -84,7 +84,7 @@ export class FI {
 }
 
 export class KYCRequest {
-  constructor(ID, user_ID, ClientName, FI_ID, FIName, dataHash, updatedOn, status, dataRequest, additionalNotes) {
+  constructor(ID, user_ID, ClientName, FI_ID, FIName, dataHash, updatedOn, status=KYCStatus, dataRequest=DataHashStatus, additionalNotes) {
     this.ID = ID;
     this.user_ID = user_ID;
     this.ClientName = ClientName;
