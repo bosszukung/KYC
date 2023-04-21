@@ -63,7 +63,7 @@ library appearances {
         string ClientName;
         address FI_ID;
         string FIName;
-        string dataHash;
+        string dataHash; 
         uint256 updatedOn;
         KYCStatus status;
         DataHashStatus dataRequest; // Get approval from user to access the data
