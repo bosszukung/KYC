@@ -21,7 +21,7 @@ export const EditProfileModal = ({
         if (data) {
             setFrechData(data)
         }
-    },[data]);;
+    },[data]);
 
     const reset = () => {
         setShowModal(false);
@@ -116,7 +116,7 @@ export const EditProfileModal = ({
                                 bgColor={colors.blueAccent[800]}
                                 _hover={{bgColor: colors.blueAccent[600]}}
                                 onPress={() => {
-                                    updateProfile();
+                                    updateMYProfile();
                                 }}
                             >
                                 {loader ? (
