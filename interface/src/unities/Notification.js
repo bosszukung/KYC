@@ -2,7 +2,7 @@ import { Store } from 'react-notifications-component';
 import 'animate.css/animate.min.css';
 import 'react-notifications-component/dist/theme.css'
 
-export const Success = (message) => {
+export function Success (message= '') {
   Store.addNotification({
       title: "Success!",
       message: message,
@@ -19,7 +19,7 @@ export const Success = (message) => {
   return message
 }
 
-export const Error = (message) => {
+export function Error (message = '') {
   Store.addNotification({
       title: "Error!",
       message: message,
