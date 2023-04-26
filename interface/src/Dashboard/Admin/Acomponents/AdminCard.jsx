@@ -10,7 +10,7 @@ import { tokens } from "../../Theme";
 import { Success } from "../../../unities";
 import { green } from "@mui/material/colors";
 
-export const CardDetails = ({item = FI}) => {
+export const CardDetails = ({item = new FI()}) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const reduceString = (address) => {
