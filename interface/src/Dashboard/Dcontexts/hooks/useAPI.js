@@ -11,9 +11,9 @@ error.message.includes("User deiend trasaction signature");
 export function useAPI() {
     const { dispatch } = useAuthContext();
     const apiInstance = KYCServices.getInstance();
-    const [listLodaing, setListLoading] = useState();
+    const [listLodaing, setListLoading] = useState(false);
     
-    const getFIList = useCallback(async (currentPage) => {
+    const getFIList = useCallback(async (currentPage = 0) => {
         try {
             setListLoading(true);
             const res = await apiInstance.AllFI(currentPage);
@@ -32,7 +32,7 @@ export function useAPI() {
         }
     }, [apiInstance, dispatch]);
 
-    const AddFI = useCallback(async(details) => {
+    const AddFI = useCallback(async(details = FI) => {
         try {
             const data = await apiInstance.AddFIAccount(details);
             assert(
@@ -51,7 +51,8 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const updateTheFI = useCallback (async(updatedDetails) => {
+    const updateTheFI = useCallback (
+        async(updatedDetails = {id:'', email:'', name:''}) => {
         try {
             const data = await apiInstance.FIUpdate(updatedDetails);
             assert(
@@ -82,7 +83,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const toggleBankStates = useCallback (async(id, status) => {
+    const toggleBankStates = useCallback (async(id = '', status = false) => {
         try {
             const data = await apiInstance.ActiveteandDeactivete(id, status);
             assert(
@@ -111,7 +112,7 @@ export function useAPI() {
 
     /* Finanical Insitution functions */
 
-    const getAllFiList = useCallback(async(currentPage) => {
+    const getAllFiList = useCallback(async(currentPage = 0) => {
         try {
             setListLoading(true);
             const res = await apiInstance.getClientofFI(currentPage);
@@ -137,7 +138,7 @@ export function useAPI() {
         }
     }, [apiInstance, dispatch]);
 
-    const gettheClientDetial = useCallback (async(id) => {
+    const gettheClientDetial = useCallback (async(id ='') => {
         try {
             const data = await apiInstance.gettheClientDetials(id);
             assert(
@@ -151,7 +152,8 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const addKycRequest = useCallback(async(data) => {
+    const addKycRequest = useCallback(
+        async(data = {client: Client, time: 0, note:''}) => {
         try {
             const res = await apiInstance.AddKYC(
                 data.client,
@@ -186,7 +188,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const RequesttKYCAgain = useCallback(async(id, note) => {
+    const RequesttKYCAgain = useCallback(async(id='', note='') => {
         try {
             const res = await apiInstance.reKYC(id, note);
             assert(
@@ -209,7 +211,8 @@ export function useAPI() {
         } 
     }, [apiInstance]);
 
-    const updateKYCVerification = useCallback(async(data) => {
+    const updateKYCVerification = useCallback(
+        async(data = {id:'', note:'', isVerified:false}) => {
         try {
             const res = await apiInstance.KYCVerification(
                 data.id,
@@ -249,7 +252,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const searcForClient = useCallback(async(id) => {
+    const searcForClient = useCallback(async(id='') => {
         try {
             const res = await apiInstance.searchClient(id);
             assert(
@@ -265,7 +268,7 @@ export function useAPI() {
 
     /* Client Functions */
 
-    const getFIKycRequest = useCallback(async(currentPage) => {
+    const getFIKycRequest = useCallback(async(currentPage=0) => {
         try {
             console.log('Financial Insitutions list request');
             setListLoading(true);
@@ -286,7 +289,7 @@ export function useAPI() {
     }, [apiInstance, dispatch]);
 
     const actionOnKYCRequest = useCallback(
-        async(fiId, isApproved, note) => {
+        async(fiId='', isApproved=false, note='') => {
             console.log(isApproved, "approval status");
             try {
                 const res = await apiInstance.KYCaction(
@@ -322,7 +325,7 @@ export function useAPI() {
         }, [apiInstance]
     );
 
-    const updateClientProfile = useCallback(async (name, email, number) => {
+    const updateClientProfile = useCallback(async (name='', email='', number='') => {
         try {
             const res = await apiInstance.updateProfile(name, email, number);
             assert(
@@ -349,7 +352,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const updateDataHash = useCallback(async(hash) => {
+    const updateDataHash = useCallback(async(hash='') => {
         try{
             const res = await apiInstance.updateHash(hash);
             assert(
@@ -368,7 +371,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const removeKycPremission = useCallback(async(id, note) => {
+    const removeKycPremission = useCallback(async(id='', note='') => {
         try {
             const res = await apiInstance.removePremission(id, note);
             assert(
@@ -392,7 +395,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const searchForFI = useCallback(async(id) => {
+    const searchForFI = useCallback(async(id='') => {
         try {
             const res = await apiInstance.searchforFI(id);
             assert(
@@ -413,7 +416,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const getUserDetails = useCallback(async() => {
+    const getUserDetails = useCallback(async() =>  {
         try {
             const res = await apiInstance.getUserInfo()
             const user = {...res, type:User}
@@ -432,7 +435,7 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const getFIDetail = useCallback(async(id) => {
+    const getFIDetail = useCallback(async(id='') => {
         try {
             const res = await apiInstance.getFIDetails(id);
             assert(
@@ -446,7 +449,7 @@ export function useAPI() {
     }, [apiInstance]);
 
     const handleAdminPagination = useCallback(async(
-        pageNo, fetchedData, totalPageNumber) => {
+        pageNo=0, fetchedData= FetchedDataType, totalPageNumber=0) => {
             assert(
                 typeof pageNo === 'number',
                 'Invalid argument: pageNo must be a number'
@@ -497,7 +500,7 @@ export function useAPI() {
     );
 
     const handleFIPagination = useCallback(async(
-        pageNo, fetchedData, totalPageNumber) => {
+        pageNo=0, fetchedData=FetchedDataType, totalPageNumber=0) => {
             assert(
                 typeof pageNo === 'number',
                 'Invalid argument: pageNo must be a number'
@@ -543,7 +546,7 @@ export function useAPI() {
     );
     
     const handleClientPagination = useCallback(async(
-        pageNo, fetchedData, totalPageNumber) => {
+        pageNo=0, fetchedData=FetchedDataType, totalPageNumber=0) => {
             assert(
                 typeof pageNo === 'number',
                 'Invalid argument: pageNo must be a number'

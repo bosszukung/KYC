@@ -1,32 +1,27 @@
 import { FI, Client, KYCRequest, User } from "./Function";
 import { contract_address } from "./config";
 import {getCurrentEpoch} from "../unities";
-import {ethers} from "ethers"
+import {Contract, ethers} from "ethers"
 
 
 let kycData = require("./KYC.json");
 let abi = kycData.abi;
 
 export class KYCServices {
-    static instance ;
-    static evenContract; 
-    _KycContract 
-    _accountAddress 
-    
-    constructor() {
-        this._KycContract = new ethers.Contract(contract_address, abi, ethers.getDefaultProvider());
-        this._accountAddress = undefined || null;
-    };
+    constructor(
+    instance = KYCServices,
+    evenContract = Contract, 
+    _KycContract = '' | undefined,
+    _accountAddress = Contract 
+    ) {
+        this.instance = instance;
+        this.evenContract = evenContract;
+        this._KycContract = _KycContract;
+        this._accountAddress = _KycContract
 
-    get accountAddress() {
-        return this._accountAddress;
-    };
+    }
 
-    set accountAddress(contract_address) {
-        this._accountAddress = contract_address
-    };
-
-    static getInstance() {
+    static getInstance()  {
         if (!KYCServices.instance) {
           KYCServices.instance = new KYCServices();
         };
@@ -63,14 +58,14 @@ export class KYCServices {
         return await this.walletChecking();
     };
 
-    getContract(contractAddress) {
+    getContract(contractAddress ='') {
         const provider = new ethers.providers.Web3Provider(window.etherreum);
         const singer = provider.getSigner();
         return new ethers.Contract(contractAddress, abi, singer)
     };   
 
     /* Admin Interface */
-    async AllFI(pageNumber) {
+    async AllFI(pageNumber=0) {
         try {
             await this.enableETH();
             const res = await this._KycContract.AllFI(pageNumber);
@@ -87,7 +82,7 @@ export class KYCServices {
         };
     };
 
-    async AddFIAccount(fi) {
+    async AddFIAccount(fi=FI) {
         try {
             await this.enableETH();
             const res = await this._KycContract.AddFIAccount(fi);
@@ -100,7 +95,7 @@ export class KYCServices {
         };
     };
 
-    async FIUpdate(data) {
+    async FIUpdate(data = {id:'', email:'', name:''}) {
         try {
             await this.enableETH();
             const res = await this._KycContract.FIUpdate(
@@ -121,7 +116,7 @@ export class KYCServices {
         };
     };
 
-    async ActiveteandDeactivete(id, status) {
+    async ActiveteandDeactivete(id='', status=false) {
         try {
             await this.enableETH();
             const res = await this._KycContract.ActiveteandDeactivete(id, status);
@@ -139,7 +134,7 @@ export class KYCServices {
     };
 
     /* Financial Insitution Interface */ 
-    async getClientofFI(pageNumber) {
+    async getClientofFI(pageNumber=0) {
         try {
             await this.enableETH();
             const res = await this._KycContract.getClientofFI(pageNumber);
@@ -156,7 +151,7 @@ export class KYCServices {
         };
     };
 
-    async gettheClientDetials(id) {
+    async gettheClientDetials(id='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.gettheClientDetials(id);
@@ -170,7 +165,7 @@ export class KYCServices {
         };
     };
 
-    async AddKYC(client, time, note) {
+    async AddKYC(client='', time='', note='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.AddKYC(client, time, note);
@@ -188,7 +183,7 @@ export class KYCServices {
         };
     };
 
-    async reKYC(id, note) {
+    async reKYC(id='', note='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.reKYC(id, note);
@@ -204,7 +199,11 @@ export class KYCServices {
         };
     };
 
-    async KYCVerification(data) {
+    async KYCVerification(data = {
+        id:'',
+        note:'',
+        isVerfied: false,
+    }) {
         try {
             await this.enableETH();
             const res = await this.KYCVerification(
@@ -226,7 +225,7 @@ export class KYCServices {
         };
     };
 
-    async searchClient(id) {
+    async searchClient(id='') {
         try{
             await this.enableETH();
             const res = await this._KycContract.searchClient(id);
@@ -250,7 +249,7 @@ export class KYCServices {
     };
 
     /* Client Interface */
-    async FIrequest(currentPageNumber) {
+    async FIrequest(currentPageNumber=0) {
         try {
             await this.enableETH();
             const res = await this._KycContract.FIrequest(currentPageNumber);
@@ -268,7 +267,7 @@ export class KYCServices {
         };
     };
 
-    async getFIDetails(id) {
+    async getFIDetails(id ='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.getFIDetails(id);
@@ -282,7 +281,7 @@ export class KYCServices {
         };
     };
 
-    async KYCaction(fiId, isApproved, note) {
+    async KYCaction(fiId='', isApproved=false, note='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.KYCaction(
@@ -303,7 +302,7 @@ export class KYCServices {
         };
     };
 
-    async updateProfile(name, email, number) {
+    async updateProfile(name='', email='', number='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.updateProfile(
@@ -322,7 +321,7 @@ export class KYCServices {
         };
     };
 
-    async updateHash(hash) {
+    async updateHash(hash='') {
         try {
             await this.enableETH();
             const epochPastSince = getCurrentEpoch();
@@ -338,7 +337,7 @@ export class KYCServices {
         };
     };
 
-    async removePremission(id, note) {
+    async removePremission(id='', note='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.removePremission(
@@ -356,7 +355,7 @@ export class KYCServices {
         };
     };
 
-    async searchforFI(id) {
+    async searchforFI(id='') {
         try {
             await this.enableETH();
             const res = await this._KycContract.searchforFI(id);
