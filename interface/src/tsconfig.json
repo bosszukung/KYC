@@ -17,9 +17,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-     "noEmit": true,
+    "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "Context", "hooks","repo", "unities" ]
+  "include": [
+    "src","Context", "hooks","repo", "unities", "ErrorPage" ]
 
 }

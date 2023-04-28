@@ -2,15 +2,16 @@ import { Box, useTheme} from "@mui/material";
 import { HStack, Text, IconButton } from "native-base";
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import { tokens } from "../../../Dashboard/Theme";
+import React from "react";
 
 
-const docsType = {
-    id: '',
-    type: '',
-    documentUrl: '',
-    showButton: false,
-    handleDelete: () => {},
-    setImage: null, 
+type docsType = {
+    id: string,
+    type: string,
+    documentUrl: string,
+    showButton: boolean,
+    handleDelete: Function,
+    setImage: null | Function, 
 };
 
 export function Card (
@@ -21,7 +22,7 @@ export function Card (
         showButton,
         handleDelete,
         setImage
-    } =  docsType ) 
+    }: docsType ) 
     {   const theme = useTheme();
         const colors = tokens(theme.palette.mode)
         return (

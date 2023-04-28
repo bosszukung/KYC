@@ -1,12 +1,11 @@
-import React, {/*useState*/ useEffect} from "react";
+import React, {useEffect} from "react";
 import '../../App.css';
 import './Login.css';
 import { useNavigate } from "react-router-dom";
 import {useAuthContext} from '../../Context'
 import {useAuth} from '../../Dashboard/Dcontexts/hooks/useAuth'
-import { Button } from "../../componants/Button";
-import { Positions } from "../../Repo";
-import { Error } from "../../unities";
+import { Button } from "native-base";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -14,6 +13,7 @@ function Login() {
     state: {isUserLoggedIn},
   } = useAuthContext();
   const {connect, getAccounts } = useAuth();
+  
   useEffect(() => {
     getAccounts();
   }, [getAccounts]);
@@ -25,33 +25,15 @@ function Login() {
       <div className="login">
         <div className="login-container">
           <h1>Log In</h1>
-          <Button onClick={() => {
-            console.log()
-            if (isUserLoggedIn) {
-              const currentUserRole = Roles.get(getAccounts()[0]);
-              switch(currentUserRole) {
-                case Positions.Admin:
-                  navigate('/admin');
-                  break;
-                case Positions.FI:
-                  navigate('/user');
-                  break;
-                case Positions.Client:
-                  navigate('/client');
-                  break;
-                  default:
-                    const errorMessage = `Unknown user role: ${currentUserRole}`;
-                    return <Error message={errorMessage} />;
-              }
-            } else {
-              connect()
-            }
-          }} 
-          className="btns" 
-          buttonstyle='btn--outline' 
-          buttonsize='button--lagre'
-          >
-            <h1 className="log">SUBMIT</h1>
+          <Button
+            size="lg"
+            colorScheme="danger"
+            w="150"
+            mt="5"
+            onPress={() =>
+              isUserLoggedIn ? navigate("/dashboard") : connect()
+            }>
+            Submit
           </Button>
         </div>
       </div>

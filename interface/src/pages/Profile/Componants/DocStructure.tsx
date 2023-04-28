@@ -1,6 +1,9 @@
 import { Box, Skeleton, useTheme } from "@mui/material";
 import { HStack } from 'native-base';
 import { tokens } from "../../../Dashboard/Theme";
+import React from "react";
+
+
 export const DocumentStructure = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);

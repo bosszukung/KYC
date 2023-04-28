@@ -1,6 +1,8 @@
-import {Button} from '../../componants/Button';
-import React from 'react';
+import * as React from 'react'
 import 'ErrorPage.css'
+import { Link } from 'react-router-dom';
+import {Button} from 'native-base'
+
 
 export function ErrorPage() {
     return (
@@ -11,14 +13,11 @@ export function ErrorPage() {
                 <h4>Please Check Your URL</h4>
             </div>
             <div className="error-btn">
-                    <Button 
-                    path='/'
-                    className="btns" 
-                    buttonstyle='btn--outline' 
-                    buttonsize='button--lagre'
-                    >
-                        Back to HomePage
-                    </Button>
+            <Link to="/">
+          <Button my="2" alignSelf="center">
+            Go back Home
+          </Button>
+        </Link>
                 </div>
         </div>
     );

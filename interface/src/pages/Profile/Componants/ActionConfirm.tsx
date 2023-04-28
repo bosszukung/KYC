@@ -1,12 +1,17 @@
 import { Button, Modal} from 'native-base';
 import { useTheme, FormControl, InputLabel } from '@mui/material';
 import { tokens } from '../../../Dashboard/Theme';
+import React from 'react';
 
 export function ActionConfirm ({
-    modalVisible = false,
-    setModalVisible = Function,
+    modalVisible,
+    setModalVisible,
     uploadDetail
-}) {
+}:  {
+    modalVisible: boolean;
+    setModalVisible: Function;
+    uploadDetail: Function;
+  }) {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
     return(

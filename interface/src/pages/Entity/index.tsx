@@ -7,7 +7,7 @@ import { Success, Error } from "../../unities";
 import RemoveRedEyeRoundedIcon from '@mui/icons-material/RemoveRedEyeRounded';
 import PrintRoundedIcon from '@mui/icons-material/PrintRounded';
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
-import {saveAs} from 'file-saver'
+import { saveAs } from "file-saver";
 import { print } from "util";
 import {useNavigate, useLocation, useParams} from 'react-router-dom';
 import {useAPI} from '../../Dashboard/Dcontexts/hooks/useAPI'
@@ -16,31 +16,33 @@ import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS.js';
 import {DocumentStructure} from '../Profile/Componants/DocStructure';
 import CopyToClipboard from "react-copy-to-clipboard";
 import { tokens } from "../../Dashboard/Theme";
-import { timeStamp } from "console";
+import React from "react";
+
 
 export function EntiyDetials() {
-    const [showModal, setShowModal] = useState(false);
-    const [url, setUrl] = useState('');
-    const [documents, setDocuments] = useState([{id: '', type: '', documentUrl: ''}]);
-    const [type, setType] = useState('');
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [url, setUrl] = useState<string>('');
+    const [documents, setDocuments] = useState
+        <{id: string; type: string; documentUrl: string}[]>([]);
+    const [type, setType] = useState<string>('');
     const [loading, setLoading] = useState(false);
     const [docloading, setDocLoading] = useState(true);
-    const [data, setData] = useState(new Client()) 
+    const [data, setData] = useState<Client>(); 
     let navigate = useNavigate();
     const {state} = useLocation();
-    const {getClientDetails} = useAPI();
-    const {getDataFromIPFS} = useIPFS();
+    const {gettheClientDetial} = useAPI();
+    const {getDataFromIpfs} = useIPFS();
     const {id} = useParams();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
     
    
     useEffect(() => {
-        async function getUserData(data='') {
+        async function getUserData(data: string) {
             try {
                 setLoading(true);
-                const result = await getClientDetails(data);
-                result && setData(result);
+                const results = await gettheClientDetial(data);
+                results && setData(results);
             } catch (error) {
                 console.log(error);
             }  finally {
@@ -53,13 +55,13 @@ export function EntiyDetials() {
         } else if (state.permission === DataHashStatus.Rejected) {
             Error('Document viewing permission denied by customer');
         }
-    }, [id, state.permission, getClientDetails, getDataFromIPFS, setData]);
+    }, [id, state.permission, setData, gettheClientDetial]);
 
     useEffect(() => {
-        async function getDocs(hash='') {
+        async function getDocs(hash: string) {
             try {
                 setDocLoading(true);
-                const result = await getDataFromIPFS(hash);
+                const result = await getDataFromIpfs(hash);
                 setDocuments(result); 
             } catch (error) {
                 console.log(error);
@@ -68,10 +70,10 @@ export function EntiyDetials() {
             }
         }
 
-        id && state.permission === DataHashStatus.Approved && data.dataHash !== ''
+        data && state.permission === DataHashStatus.Approved && data.dataHash !== ''
         ? getDocs(data.dataHash)
         : setDocLoading(false);  
-    }, [data.dataHash, getDataFromIPFS, id, state.permission])
+    }, [data, getDataFromIpfs, id, state.permission])
 
     return (
        <>
@@ -136,7 +138,7 @@ export function EntiyDetials() {
                                             </Text>
                                         </CopyToClipboard>
                                         <Text color={colors.grey[600]}>
-                                                Upadata at {timeStamp}
+                                                Upadata at
                                         </Text>
                                     </VStack>    
                                 </HStack>

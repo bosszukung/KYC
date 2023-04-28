@@ -1,18 +1,21 @@
 import { Button, Modal, Center } from 'native-base';
 import {tokens} from '../../../Dashboard/Theme';
 import {useTheme} from '@mui/material'
+import React from 'react';
 
 
 
 export function UploadDoc ({
-    showModal = false,
-    setShowModal = () => {},
+    showModal,
+    setShowModal,
+}: {showModal: boolean;
+    setShowModal: Function
 }) {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
     return (
         <Center>
-            <Modal isopen={showModal} onClose={() => setShowModal(false)}>
+            <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
                 <Modal.Content maxWidth={'400px'}>
                     <Modal.Header>Upload Document</Modal.Header>
                     <Modal.Body>

@@ -2,12 +2,16 @@ import { Box, useTheme } from "@mui/material";
 import {HStack, Pressable, Text, VStack} from "native-base";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { tokens } from "../../Dashboard/Theme";
-
+import React from "react";
 
 export const ViewPhoto = ({
-    url= '',
-    type ='',
-    setShowModal = false,
+    url,
+    type,
+    setShowModal,
+}: {
+    url: string;
+    type: string;
+    setShowModal: (arg0: boolean) => void;
 }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -26,8 +30,11 @@ export const ViewPhoto = ({
             <HStack width={"100%"} justifyContent={"flex-end"}>
                 <Pressable onPress={() => setShowModal(false)} p={'1'}>
                     <CloseOutlinedIcon
-                        color={colors.primary[400]}
-                        sx={{cursor:"pointer", fontSize:"30"}}
+                        sx={{
+                            cursor:"pointer", 
+                            fontSize:"30",
+                            color:colors.primary[400]
+                        }}
                         className="cross-icon"
                     />
                 </Pressable>

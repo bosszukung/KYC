@@ -2,7 +2,6 @@ import { FI, Client, KYCRequest, User } from "./Function";
 import { contract_address } from "./config";
 import {getCurrentEpoch} from "../unities";
 import {Contract, ethers} from "ethers"
-import { KYCServices } from "./Servicebakuo";
 import '../react-app-env'
 
 
@@ -16,10 +15,10 @@ export class KycServices {
     static eventContract: Contract;
 
     static getInstance(): KycServices {
-        if (!KYCServices.instance) {
-          KYCServices.instance = new KYCServices();
+        if (!KycServices.instance) {
+          KycServices.instance = new KycServices();
         };
-        return KYCServices.instance;
+        return KycServices.instance;
     };
 
     walletChecking = async () => {
@@ -114,7 +113,7 @@ export class KycServices {
         };
     };
 
-    async gettheClientDetials(id: string): Promise<FI> {
+    async gettheClientDetials(id: string): Promise<Client> {
         try {
             await this.enableETH();
             const res = await this._KycContract.gettheClientDetials(id);

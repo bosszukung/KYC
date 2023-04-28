@@ -12,40 +12,38 @@ import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS';
 import {EncodeImage} from '../../unities/imageEncode';
 import {EditProfileModal} from './Componants/EditModal';
 import { useAPI } from '../../Dashboard/Dcontexts/hooks/useAPI';
-import { Client, KYCServices } from '../../Repo';
+import { Client, KycServices } from '../../Repo';
 import {ActionConfirm} from './Componants/ActionConfirm';
 import {DocumentStructure} from './Componants/DocStructure';
 import { tokens } from '../../Dashboard/Theme';
 
 
-class docsType {
-    constructor(id='', type='', documentUrl='') {
-        this.id = id;
-        this.type = type;
-        this.documentUrl = documentUrl
-    }
+type docsType = {
+        id: string;
+        type: string;
+        documentUrl: string
 }; 
 let docRequird = ["idcard", "passport", "drivinglicense"];
 
 export function ProfilePage() {
     const theme = useTheme();
     const colors =tokens(theme.palette.mode);
-    const [showEditMode, setShowEditMode] = useState(false);
+    const [showEditMode, setShowEditMode] = useState<boolean>(false);
     const [showModal, setShowModal] = useState(false);
     const [document, setDocument] = useState(docRequird[0]);
     const [docList, setDocList] = useState(docRequird);
-    const [fileUrl, setFileUrl] = useState('');
-    const [allDocs, setAllDocs] = useState([new docsType([])]);
+    const [fileUrl, setFileUrl] = useState<any>('');
+    const [allDocs, setAllDocs] = useState<docsType[]>([] as docsType[]);
     const [showFirstImage, setShowFristImage] = useState(false);
-    const [myData, setMyData] = useState(new Client({}));
+    const [myData, setMyData] = useState<Client>({} as Client);
     const {
         state: {
-            userDetails: {id}
+            userDetails: {ID}
         }
     } = useAuthContext();
-    const [userAddress, setUserAddress] = useState(shorterString(id));
-    const {upload, getDatsFromIPFS} = useIPFS();
-    const {getClientDetails, updateDatahash} = useAPI();
+    const [userAddress, setUserAddress] = useState(shorterString(ID));
+    const {upload, getDataFromIpfs} = useIPFS();
+    const {gettheClientDetial, updateDataHash} = useAPI();
     const [showSaveButton, setSaveButton] = useState(false);
     const [showUploadModal, setShowUploadModal] = useState(false);
     const [loader, setLoader] = useState(true);
@@ -53,7 +51,7 @@ export function ProfilePage() {
     const [saveLoader, setSaveLoader] = useState(false);
     
 
-    async function handleFileChange (e) {
+    async function handleFileChange (e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
             const file = e.target.files[0];
             const base64 = await EncodeImage(file);
@@ -64,8 +62,8 @@ export function ProfilePage() {
     }
 
     const compareFunction = (
-        allDocsItem = docsType,
-        uploadAllItem = docsType
+        allDocsItem: docsType,
+        uploadAllItem: docsType
     ) => allDocsItem.type === uploadAllItem.type;
 
     useEffect(() => {
@@ -88,7 +86,7 @@ export function ProfilePage() {
     function handleDelete(id = '') {
         setShowFristImage(true);
         setDocument(allDocs.find((i) => i.id)?.type || "");
-        const updatedAllDocs = allDocs.filter((doc = docsType) => doc.id !== id);
+        const updatedAllDocs = allDocs.filter((doc:docsType) => doc.id !== id);
         if (updatedAllDocs.length === allDocs.length) {
             console.log("working");
             const result = allDocs.forEach(
@@ -103,7 +101,7 @@ export function ProfilePage() {
         setShowModal(true);
     }
 
-    function handlefirstDocImage(id = '') {
+    function handlefirstDocImage(id: string) {
         setDocument(allDocs.find((i) => i.id === id)?.type || "");
         const temp = allDocs.filter((i) => i.id !== id);
         setAllDocs(temp);
@@ -123,7 +121,7 @@ export function ProfilePage() {
         const jsonData = JSON.stringify(allDocs);
         const result = await upload(jsonData);
         if (result) {
-            updateDatahash(result.path);
+            updateDataHash(result.path);
             listenToDataHashEvent();
         }
         setSaveLoader(false)
@@ -133,7 +131,7 @@ export function ProfilePage() {
         if (myData.dataHash) {
             (async () => {
                 try {
-                    const result = await  getDatsFromIPFS(myData);
+                    const result = await  getDataFromIpfs(myData);
                     setAllDocs(result);
                 } catch (error) {
                     console.log(error)
@@ -145,24 +143,24 @@ export function ProfilePage() {
         } else {
             setLoader(false);
         }
-    }, [getDatsFromIPFS, myData])
+    }, [getDataFromIpfs, myData])
   
     useEffect(() => {
         (async () => {
             setLoader(true);
-            const data = await getClientDetails(id);
+            const data = await gettheClientDetial(ID);
             if (data) {
                 setMyData(data);
             }
         })();
-    },[getClientDetails, id]);
+    },[ID, gettheClientDetial]);
 
     const listenToDataHashEvent = async () => {
-        KYCServices.evenContract.on(
+        KycServices.eventContract.on(
             "DataHashUpdated", 
-            async (id,clientName, dataHash) => {
+            async (ID,clientName, dataHash) => {
                 console.log('event', clientName, dataHash);
-                const data = await getClientDetails(id);
+                const data = await gettheClientDetial(ID);
                 if (data) {
                     setMyData(data);
                 }
@@ -172,11 +170,11 @@ export function ProfilePage() {
 
     useEffect(() => {
         const listenToClientDataEvent = () => {
-            KYCServices.evenContract.on(
+            KycServices.eventContract.on(
                 "ClientDataUpdated",
-                async (id, name, email) => {
+                async (ID, name, email) => {
                     console.log("event", name, email);
-                    const data = await getClientDetails(id);
+                    const data = await gettheClientDetial(ID);
                     if (data) {
                         setMyData(data);
                     }
@@ -184,7 +182,7 @@ export function ProfilePage() {
             );
         };
         listenToClientDataEvent();
-    }, [getClientDetails]);
+    }, [gettheClientDetial]);
 
     return (
         <div>
@@ -220,11 +218,11 @@ export function ProfilePage() {
                                         Travis Howard
                                     </Avatar>
                                     <Pressable
-                                    onHoverIn={() => setUserAddress(id)}
-                                    onHoverOut={() => setUserAddress(shorterString(id))}
+                                    onHoverIn={() => setUserAddress(ID)}
+                                    onHoverOut={() => setUserAddress(shorterString(ID))}
                                     >
                                         <CopyToClipboard
-                                        text={id}
+                                        text={ID}
                                         onCopy={() =>
                                             Success('Address copied succesfuly')}
                                         >
@@ -273,8 +271,8 @@ export function ProfilePage() {
                             onPress={() => setShowModal(true)}
                             icon={
                                 <AddCircleOutlinedIcon 
-                                color={colors.primary[400]}
-                                sx={{fontSize:'30'}}/> 
+                                
+                                sx={{fontSize:'30', color:colors.primary[400]}}/> 
                             }
                             />
                         )}
@@ -290,8 +288,7 @@ export function ProfilePage() {
                                     <Spinner size={'lg'} />
                                 ): (
                                     <SaveOutlinedIcon 
-                                    color={colors.primary[400]}
-                                    sx={{fontSize:'30'}}/>
+                                    sx={{fontSize:'30', color:colors.primary[400]}}/>
                                 )
                             }
                             />
@@ -364,7 +361,7 @@ export function ProfilePage() {
                     <ActionConfirm
                     setModalVisible={setShowUploadModal}
                     modalVisible={showUploadModal}
-                    uploadDetails={uploadToIPFS}
+                    uploadDetail={uploadToIPFS}
                     />
                 </VStack>
             </Center>

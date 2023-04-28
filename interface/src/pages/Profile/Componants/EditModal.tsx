@@ -5,14 +5,19 @@ import { useEffect, useState } from "react";
 import {useAPI} from '../../../Dashboard/Dcontexts/hooks/useAPI';
 import { Client } from "../../../Repo";
 import { Error } from "../../../unities";
+import React from "react";
 
 export const EditProfileModal = ({
-    data = Client,
-    showModal = false,
-    setShowModal = () => {}
+    data,
+    showModal,
+    setShowModal
+}: {
+    data: Client;
+    showModal: boolean;
+    setShowModal: Function
 }) => {
-    const [freshData, setFrechData] = useState(new Client({}))
-    const {updateProfile} = useAPI();
+    const [freshData, setFrechData] = useState<Client>({} as Client)
+    const {updateClientProfile} = useAPI();
     const [loader, setLoader] = useState(false);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
@@ -25,7 +30,7 @@ export const EditProfileModal = ({
 
     const reset = () => {
         setShowModal(false);
-        setFrechData(new Client({}))
+        setFrechData({} as Client)
         
     };
 
@@ -50,7 +55,7 @@ export const EditProfileModal = ({
     const updateMYProfile = async () => {
         if (validate()) {
             setLoader(true);
-            await updateProfile(
+            await updateClientProfile(
                 freshData.name,
                 freshData.email,
                 freshData.MobileNumber
@@ -71,7 +76,7 @@ export const EditProfileModal = ({
                             <Input
                                 value={freshData.name}
                                 onChangeText={(text) => 
-                                setFrechData((currentData = Client) => {
+                                setFrechData((currentData: Client) => {
                                     return{...currentData, name: text};
                                     })
                                 }
@@ -82,7 +87,7 @@ export const EditProfileModal = ({
                             <Input
                                 value={freshData.email}
                                 onChangeText={(text) =>
-                                    setFrechData((currentData = Client) => {
+                                    setFrechData((currentData: Client) => {
                                         return {...currentData, email: text};
                                     })
                                 }
@@ -93,7 +98,7 @@ export const EditProfileModal = ({
                             <Input
                                 value={freshData.MobileNumber}
                                 onChangeText={(text) =>
-                                    setFrechData((currentData = Client) => {
+                                    setFrechData((currentData: Client) => {
                                         return {...currentData, MobileNumber: text};
                                     })
                                 }

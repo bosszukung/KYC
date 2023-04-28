@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.css'
-import {Button} from '../../componants/Button'
+import { Button } from 'native-base'
+import { Link } from "react-router-dom";
 import './Home.css'
 
 function Home() {
@@ -10,18 +11,14 @@ function Home() {
                 <h1>Automate KYC on Blockchian</h1>
                 <h4>Simplify KYC Compliance with The Blockchain Integration</h4>
                 <div className="home-btn">
-                    <Button 
-                    path='/login'
-                    className="btns" 
-                    buttonstyle='btn--outline' 
-                    buttonsize='button--lagre'
-                    >
-                        GET STARTED
-                    </Button>
+                    <Link to="/login">
+                        <Button my="2" alignSelf="center">
+                            Get Start
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </>
-        
     )
 };
 
