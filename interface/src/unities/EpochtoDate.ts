@@ -1,4 +1,4 @@
-export const EpochToDate = (Epoch) => {
+export const EpochToDate = (Epoch: number) => {
     const theDate = new Date(Epoch * 1000);
     const [date, time] = theDate.toLocaleString('en-GB',{
         hour: 'numeric',
@@ -15,7 +15,7 @@ export const getCurrentEpoch = () => {
     return secondsSinceEpoch;
 };
 
-export const getCustomDate = (date) => {
+export const getCustomDate = (date: string) => {
     const someDate  = new Date(date);
     return someDate.getTime();
 };

@@ -1,3 +1,3 @@
-export * from './Action.js';
-export * from './actionType.js';
-export * from './authContext.js'
+export * from './Action';
+export * from './actionType';
+export * from './authContext'

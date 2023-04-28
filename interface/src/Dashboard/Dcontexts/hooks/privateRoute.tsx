@@ -1,10 +1,10 @@
 import React from 'react';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import { useAuthContext} from '../../../Context';
+import {useAuthContext} from '../../../Context/authContext';
 
 
 function PrivateRoute() {
-  const { state: { isUserLoggedIn},
+  const { state: {isUserLoggedIn},
 } = useAuthContext();
   const { pathname, search } = useLocation();
   

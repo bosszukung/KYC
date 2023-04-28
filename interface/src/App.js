@@ -15,7 +15,6 @@ import UPie from './Dashboard/User/Ucomponents/senes/Pie/UPie'
 import Client from './Dashboard/Client/Client_Dashboard';
 import CDashboard from './Dashboard/Client/CDashboard';
 import CPie from './Dashboard/Client/Ccomponents/senes/Pie/CPie';
-import PrivateRoute from './Dashboard/Dcontexts/hooks/privateRoute';
 
 
 
@@ -30,13 +29,13 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginButton />} />
 
-        <Route element={<PrivateRoute allowedRoles={["Admin"]}></PrivateRoute>}>  
+        {/* <Route element={<PrivateRoute allowedRoles={["Admin"]}></PrivateRoute>}>   */}
           <Route path='/admin' element={<Admin setShowNavbar={setShowNavbar} showNavbar={false} />}>
             <Route path='/admin' element={<ADashboard/>} />
             <Route path='fi' element={<FIT />} />
             <Route path='apie' element={<APie />} />
           </Route>
-        </Route> 
+        {/* </Route>  */}
 
         {/* <Route element={<PrivateRoute allowedRoles='FI'/>}> */}
           <Route path='/user' element={<User setShowNavbar={setShowNavbar} showNavbar={false} />}>
