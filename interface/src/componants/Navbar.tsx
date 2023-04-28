@@ -15,7 +15,7 @@ function Navbar() {
             <div className='navbar-container'>
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
                     KYCC 
-                    <i class="fas fa-key" />
+                    <i className="fas fa-key" />
                 </Link>
                 <div className='menu-icon' onClick={handleclick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

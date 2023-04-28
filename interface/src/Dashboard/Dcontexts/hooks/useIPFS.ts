@@ -9,7 +9,7 @@ const authorisation = "Basic " + base64EncodedAuth;
 
 
 export const useIPFS = () => {
-  let ipfs = IPFSHTTPClient();
+  let ipfs:IPFSHTTPClient | undefined;
   (() => {
     try {
       ipfs = create({
@@ -19,17 +19,17 @@ export const useIPFS = () => {
         },
       });
     } catch (error) {
-      Error("IPFS failure", error.message);
+      Error("IPFS failure");
       ipfs = undefined;
     }
   })();
 
-  const upload = async (data) => {
+  const upload = async (data: any) => {
     try {
-      const result = await ipfs.add(data);
+      const result = await (ipfs as IPFSHTTPClient).add(data);
       return result;
     } catch (error) {
-      Error("Failed to upload", error.message);
+      Error("Failed to upload");
     }
   };
 
@@ -43,7 +43,7 @@ export const useIPFS = () => {
         return "";
       }
     } catch (error) {
-      Error("Failed to fetch data from ipfs", error.message);
+      Error("Failed to fetch data from ipfs");
     }
   };
 

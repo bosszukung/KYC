@@ -2,12 +2,14 @@ import { HStack, Icon, Pressable, Text } from "native-base";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate } from "react-router-dom";
 
-export function PopHeader({ text, route }) {
+export function PopHeader({ text, route }:
+  {text: string,
+  route: any }) {
   const navigate = useNavigate();
   return (
     <HStack alignItems={"center"} mb="4">
       <Pressable onPress={() => navigate(route)}>
-        <Icon as={<ArrowBackIosNewIcon size={20} className="icon" />} />
+        <Icon as={<ArrowBackIosNewIcon sx={{fontSize:'20'}} className="icon" />} />
       </Pressable>
       <Text
         color="black"

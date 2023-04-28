@@ -1,5 +1,6 @@
 import { HStack, Text } from "native-base";
-import { caseCount } from './caseCount'
+import {CaseCount} from './caseCount'
+import React from 'react';
 
 
 export const myCase = () => {
@@ -12,9 +13,9 @@ export const myCase = () => {
                 My Dashboard
             </Text>
             <HStack space={10} flexDirection={["column", "row"]}>
-                <caseCount count={246} heading={'Registered'} />
-                <caseCount count={192} heading={"Rejected"} />
-                <caseCount count={16} heading={"Approved"} />
+                <CaseCount count={246} heading={'Registered'} />
+                <CaseCount count={192} heading={"Rejected"} />
+                <CaseCount count={16} heading={"Approved"} />
             </HStack>
         </div>
     ) 

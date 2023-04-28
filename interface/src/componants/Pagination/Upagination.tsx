@@ -5,14 +5,15 @@ import { useAuthContext } from "../../Context";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import React from "react";
 
 export function UserPagination() {
     const {
         state: {pageNo, totalPageNumber}
     } = useAuthContext();
-    const {listLoading} =useAPI();
+    const {listLodaing} = useAPI();
     const navigate = useNavigate();
-    if (listLoading) {
+    if (listLodaing) {
         return <></>;
     } 
     return totalPageNumber <= 1 ? (
@@ -20,7 +21,7 @@ export function UserPagination() {
     )  : (
         <HStack justifyContent={"space-between"} w="100%" alignItems={"center"}>
       <HStack alignItems={"center"}>
-        <ModeEditOutlineIcon color="white" />
+        <ModeEditOutlineIcon sx={{color: "white"}} />
         <Text ml="2" color="white">
           {`Page ${pageNo} of ${totalPageNumber} pages`}
         </Text>
@@ -31,7 +32,7 @@ export function UserPagination() {
             variant={"ghost"}
             color="white"
             icon={<ArrowBackIosIcon />}
-            onPress={() => navigate(`/user?page=${pageNo - 1}`)}
+            onPress={() => navigate(`/admim?page=${pageNo - 1}`)}
           />
         )}
         <HStack w="80px" justifyContent={"space-evenly"} mx="2">
@@ -39,7 +40,7 @@ export function UserPagination() {
         </HStack>
         {pageNo < totalPageNumber && (
           <IconButton
-            onPress={() => navigate(`/user?page=${pageNo + 1}`)}
+            onPress={() => navigate(`/admin?page=${pageNo + 1}`)}
             variant={"ghost"}
             color="white"
             icon={<ArrowForwardIosIcon />}

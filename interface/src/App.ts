@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import './App.css';
 import Navbar from './componants/Navbar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from '../../interface/src/pages/HomePage/Home';
+import Home from './pages/HomePage/Home';
 import About from './pages/About/About' ;
 import Admin from './Dashboard/Admin/Admin_Dashboard';
 import ADashboard from './Dashboard/Admin/ADashboard';
-import LoginButton from '../../interface/src/pages/Login/Login';
+import LoginButton from './pages/Login/Login';
 import APie from './Dashboard/Admin/Acomponents/senes/Pie/APie';
 import FIT from './Dashboard/Admin/FIT';
 import User from './Dashboard/User/User_Dashboard';
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
     <Router>
-      {showNavbar && <Navbar />}
+      {showNavbar && Navbar()}
       <Routes>  
         <Route path='/' exact element={<Home />} />
         <Route path='/about' element={<About />} />

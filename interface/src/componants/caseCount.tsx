@@ -1,7 +1,11 @@
 import { Center, HStack, Text } from "native-base";
+import React from "react";
 
-export const caseCount = ({ count, heading }) => {
-  const format = (count) => {
+export const CaseCount = ({ count, heading }: {
+  count: number;
+  heading: string;
+}) => {
+  const format = (count: number) => {
     if (count < 100) {
       return `0${count}`;
     }
