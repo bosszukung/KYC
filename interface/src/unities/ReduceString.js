@@ -1,4 +1,4 @@
-import {FI, FIStatus, DataHashStatus, KYCRequest, KYCStatus} from "../Repo/index.tx";
+import {FI, FIStatus, DataHashStatus, KYCRequest, KYCStatus} from "../Repo/index.ts";
 import PropTypes from 'prop-types'
 
 export const shorterString = (address) => {

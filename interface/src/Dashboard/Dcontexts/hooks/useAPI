@@ -3,7 +3,6 @@ import { setData, setFetchedData, useAuthContext} from '../../../Context';
 import { FetchedDataType } from "../../../Context/types"; 
 import {FI, FIStatus, Client, KYCServices, User} from '../../../Repo';
 import { Success, Error } from "../../../unities";
-import { assert } from "assert";
 
 const rejectErrorCheck = (error) => 
 error.message.includes("User deiend trasaction signature");
@@ -22,7 +21,7 @@ export function useAPI() {
                 'Invalid argument: currentPage must be a number'
             );
             const data = res[1].filter((i) => ({...i}));
-            dispatch(setData({data, TotalPage: +res[0].toString(), currentPage}));
+            dispatch(setData({data, totalPages: +res[0].toString(), currentPage}));
             dispatch(setFetchedData({pageNo: currentPage +"", data}));
         } catch (error) {
             console.log(error);

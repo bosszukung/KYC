@@ -1,11 +1,10 @@
 import { useCallback, useState } from "react";
 import { setData, setFetchedData, useAuthContext} from '../../../Context';
 import { FetchedDataType } from "../../../Context/types"; 
-import {FI, FIStatus, Client, User, KycServices} from '../../../Repo/index.tx';
-
+import { FI, FIStatus, Client, KycServices, User } from "../../../Repo";
 import { Success, Error } from "../../../unities";
 
-const rejectErrorCheck = (error) => 
+const rejectErrorCheck = (error: any) => 
 error.message.includes("User deiend trasaction signature");
 
 export function useAPI() {
@@ -28,13 +27,9 @@ export function useAPI() {
         }
     }, [apiInstance, dispatch]);
 
-    const AddFI = useCallback(async(details = FI) => {
+    const AddFI = useCallback(async(details: FI) => {
         try {
             const data = await apiInstance.AddFIAccount(details);
-            assert(
-                details instanceof FI,
-                `Invalid argument: details must be an instance of FI, but received ${typeof details}`
-            );
             Success("Successfully updated the data, it will takes few minutes to update");
             return data;
         } catch (error) {
@@ -48,25 +43,9 @@ export function useAPI() {
     }, [apiInstance]);
 
     const updateTheFI = useCallback (
-        async(updatedDetails = {id:'', email:'', name:''}) => {
+        async(updatedDetails: {id: string, email: string, name: string}) => {
         try {
             const data = await apiInstance.FIUpdate(updatedDetails);
-            assert(
-                typeof updatedDetails === 'object', 
-                'Invalid argument: updatedDetails must be an object'
-            );
-            assert(
-                typeof updatedDetails.id === 'string', 
-                'Invalid argument: updatedDetails.id must be a string'
-            );
-            assert(
-                typeof updatedDetails.email === 'string', 
-                'Invalid argument: updatedDetails.email must be a string'
-            );
-            assert(
-                typeof updatedDetails.name === 'string', 
-                'Invalid argument: updatedDetails.name must be a string'
-            );
             Success('Successfully updated the data, it will takes few minutes to update');
             return data;
         } catch (error) {
@@ -79,18 +58,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const toggleBankStates = useCallback (async(id = '', status = false) => {
+    const toggleBankStates = useCallback (async(id: string, status: boolean) => {
         try {
             const data = await apiInstance.ActiveteandDeactivete(id, status);
-            assert(
-                typeof id === 'string', 
-                'Invalid argument: id must be a string'
-            );
-            assert(
-                typeof status === 'boolean', 
-                'Invalid argument: status must be a boolean'
-            );
-    
             Success(
                 'Financial Institution status has been changed to ' + 
                 (status ? "active" : "inactive")
@@ -108,19 +78,16 @@ export function useAPI() {
 
     /* Finanical Insitution functions */
 
-    const getAllFiList = useCallback(async(currentPage = 0) => {
+    const getAllFiList = useCallback(async(currentPage: number) => {
         try {
             setListLoading(true);
             const res = await apiInstance.getClientofFI(currentPage);
-            assert(
-                typeof currentPage === 'number',
-                'Invalid argument: currentPage must be a number between 1 and ' + Number.MAX_SAFE_INTEGER
-            );
             console.log(res);
-            dispatch(setData({
-                data: res[1],
-                TotalPage: +res[0].toString(),
-                currentPage: 1
+            dispatch(
+                setData({
+                    data: res[1],
+                    totalPages: +res[0].toString(),
+                    currentPage: 1
             }));
             dispatch(setFetchedData({
                 pageNo: currentPage + "",
@@ -134,13 +101,9 @@ export function useAPI() {
         }
     }, [apiInstance, dispatch]);
 
-    const gettheClientDetial = useCallback (async(id ='') => {
+    const gettheClientDetial = useCallback (async(id: string) => {
         try {
             const data = await apiInstance.gettheClientDetials(id);
-            assert(
-                typeof id === 'string',
-                'Invalid argument: id must be strings'
-            );
             return data;
         } catch (error) {
             console.log(error);
@@ -149,28 +112,12 @@ export function useAPI() {
     }, [apiInstance]);
 
     const addKycRequest = useCallback(
-        async(data = {client: Client, time: 0, note:''}) => {
+        async(data: {client: Client; time: number; note: string;}) => {
         try {
             const res = await apiInstance.AddKYC(
                 data.client,
                 data.time,
                 data.note
-            );
-            assert(
-                typeof data === 'object', 
-                'Invalid argument: data must be an object'
-            );
-            assert(
-                data.client instanceof Client,
-                'Invalid argument: data must be an object of Cleint'
-            );
-            assert(
-                typeof data.time === 'number',
-                'Invalid argument: time must be a number'
-            );
-            assert(
-                typeof data.note === 'string',
-                'Invalid argument: note must be strings'
             );
             Success('sucessfully added KYC')
             return res
@@ -184,17 +131,10 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const RequesttKYCAgain = useCallback(async(id='', note='') => {
+    const RequesttKYCAgain = useCallback(
+        async(id: string, note: string) => {
         try {
             const res = await apiInstance.reKYC(id, note);
-            assert(
-                typeof id === 'string',
-                'Invalid argument: id must be strings'
-            );
-            assert(
-                typeof note === 'string',
-                'Invalid argument: note must be strings'
-            );
             Success('Suceessfully  requested KYC again');
             return res;
         } catch (error) {
@@ -208,29 +148,9 @@ export function useAPI() {
     }, [apiInstance]);
 
     const updateKYCVerification = useCallback(
-        async(data = {id:'', note:'', isVerified:false}) => {
+        async(data: {id: string; isVerified: boolean; note: string;  }) => {
         try {
-            const res = await apiInstance.KYCVerification(
-                data.id,
-                data.isVerified,
-                data.note
-            );
-            assert(
-                typeof data === 'object', 
-                'Invalid argument: data must be an object'
-            );
-            assert(
-                data.id === 'string',
-                'Invalid argument: data.id must be an strings'
-            );
-            assert(
-                typeof data.isVerified === 'boolean',
-                'Invalid argument: data.isVerified must be a boolean'
-            );
-            assert(
-                typeof data.note === 'string',
-                'Invalid argument: note must be strings'
-            );
+            const res = await apiInstance.KYCVerification(data);
             Success(`KYC request ${
                     data.isVerified 
                     ? "verified" 
@@ -248,13 +168,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const searcForClient = useCallback(async(id='') => {
+    const searcForClient = useCallback(async(id: string) => {
         try {
             const res = await apiInstance.searchClient(id);
-            assert(
-                typeof id === 'string', 
-                'Invalid argument: id must be strings' 
-            );
             return res;
         } catch (error) {
             console.log(error);
@@ -264,17 +180,13 @@ export function useAPI() {
 
     /* Client Functions */
 
-    const getFIKycRequest = useCallback(async(currentPage=0) => {
+    const getFIKycRequest = useCallback(async(currentPage: number) => {
         try {
             console.log('Financial Insitutions list request');
             setListLoading(true);
             const res = await apiInstance.FIrequest(currentPage);
-            assert(
-                typeof currentPage === 'number',
-                'Invalid argument: currentPage must be a number'
-            );
             const data = res[1];
-            dispatch(setData({data, TotalPage: +res[0].toString(), currentPage}));
+            dispatch(setData({data, totalPages: +res[0].toString(), currentPage}));
             dispatch(setFetchedData({ pageNo: currentPage + "", data }));
         } catch (error) {
             console.log(error);
@@ -285,25 +197,13 @@ export function useAPI() {
     }, [apiInstance, dispatch]);
 
     const actionOnKYCRequest = useCallback(
-        async(fiId='', isApproved=false, note='') => {
+        async(fiId: string, isApproved: boolean, note: string) => {
             console.log(isApproved, "approval status");
             try {
                 const res = await apiInstance.KYCaction(
                     fiId,
                     isApproved,
                     note
-                );
-                assert(
-                    typeof fiId === 'string',
-                    'Invalid argument: fiId must be strings'
-                );
-                assert(
-                    typeof isApproved === 'boolean',
-                    'Invalid argument: isApproved must be boolean'
-                );
-                assert(
-                    typeof note === 'string',
-                    'Invalid argument: note must be strings'
                 );
                 console.log(res);
                 Success("Data has sent to  you financial insitution");
@@ -321,21 +221,10 @@ export function useAPI() {
         }, [apiInstance]
     );
 
-    const updateClientProfile = useCallback(async (name='', email='', number='') => {
+    const updateClientProfile = useCallback(
+        async (name: string, email: string, number:string) => {
         try {
             const res = await apiInstance.updateProfile(name, email, number);
-            assert(
-                typeof name === 'string',
-                'Invalid argument: name must be strings'
-            );
-            assert(
-                typeof email === 'string',
-                'Invalid argument: email must be strings'
-            );
-            assert(
-                typeof number === 'string',
-                'Invalid argument: number must be strings'
-            );
             Success('Sucessfully uppdated profile');
             return res;
         } catch (error) {
@@ -348,13 +237,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const updateDataHash = useCallback(async(hash='') => {
+    const updateDataHash = useCallback(async(hash: string) => {
         try{
             const res = await apiInstance.updateHash(hash);
-            assert(
-                typeof hash === 'string',
-                'Invalid argument: hash must be strings'
-            );
             Success("Data hash has been updated");
             return res;
         } catch (error) {
@@ -367,17 +252,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const removeKycPremission = useCallback(async(id='', note='') => {
+    const removeKycPremission = useCallback(async(id: string, note:string) => {
         try {
             const res = await apiInstance.removePremission(id, note);
-            assert(
-                typeof id === 'string',
-                'Invalid argument: id must be strings'
-            );
-            assert(
-                typeof note === 'string',
-                'Invalid argument: note must be strings'
-            )
             console.log(res);
             Success('Data permssion has been revoke');
             return res;
@@ -391,13 +268,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const searchForFI = useCallback(async(id='') => {
+    const searchForFI = useCallback(async(id: string) => {
         try {
             const res = await apiInstance.searchforFI(id);
-            assert(
-                typeof id === 'string',
-                'Invalid argument: id must be strings'
-            )
             const formatedData = {isFi: res[1], FiDetails: res[2]};
             return formatedData
         } catch (error) {
@@ -412,18 +285,17 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const getUserDetails = useCallback(async() =>  {
+    const getUserDetails = useCallback(async(): Promise<User | undefined> =>  {
         try {
             const res = await apiInstance.getUserInfo()
-            const user = {...res, type:User}
-            console.log(user);
-            if(user.status === FIStatus.Inactive) {
-                throw new Error("This financial institution is inactive");
+            console.log(res);
+            if(res.status === FIStatus.Inactive) {
+                throw Error("This financial institution is inactive");
             }
-            return user;
+            return res;
         } catch (error) {
             console.log(error);
-            if (error.message === 'This financial institution is inactive') {
+            if (error === 'This financial institution is inactive') {
                 Error('This financial institution is inactive');
             } else {
                 Error('Failed to authenticate the metamask user!');
@@ -431,130 +303,101 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const getFIDetail = useCallback(async(id='') => {
+    const getFIDetail = useCallback(async(id: string) => {
         try {
             const res = await apiInstance.getFIDetails(id);
-            assert(
-                typeof id === 'string',
-                'Invalid argument: id must be strings'
-            );
             return res;
         } catch (error) {
             throw error;
         }
     }, [apiInstance]);
 
-    const handleAdminPagination = useCallback(async(
-        pageNo=0, fetchedData= FetchedDataType, totalPageNumber=0) => {
-            assert(
-                typeof pageNo === 'number',
-                'Invalid argument: pageNo must be a number'
-            );
-            assert(
-                fetchedData instanceof FetchedDataType,
-                'Invalid argument: fechedData must be FetchedDataType object'
-            );
-            assert(
-                typeof totalPageNumber === 'number',
-                'Invalid argument: TotalPageNumber must be a number'
-            );
-            if (!fetchedData[pageNo]) {
-                try {
-                    setListLoading(true);
-                    const res = await apiInstance.AllFI(pageNo);
-                    const nextData = res[1].map((i) => ({...i}));
-                    dispatch(setFetchedData({ pageNo: pageNo + "", data: nextData}));
-                    dispatch(
-                        setData({
-                            data: nextData,
-                            TotalPage: +res[0].toString(),
-                            currentPage: pageNo,
-                        })
-                    );
-                } catch (error) {
-                    console.log(error);
-                    Error(
-                        error.message.includes('This Financial Insitution is not avtive')
-                        ? 'This Financial Insitution is deactiveted by admin, please contract for more info'
-                        : 'Error while fetching Financial Insitution list'
-                    );
-                } finally {
-                    setListLoading(false);
+    const handleAdminPagination = useCallback(
+        async(
+            pageNo: number, 
+            fetchedData: FetchedDataType, 
+            totalPageNumber: number
+        ) => {
+                if (!fetchedData[pageNo]) {
+                    try {
+                        setListLoading(true);
+                        const res = await apiInstance.AllFI(pageNo);
+                        const nextData = res[1].map((i) => ({...i}));
+                        dispatch(setFetchedData({ pageNo: pageNo + "", data: nextData}));
+                        dispatch(
+                            setData({
+                                data: nextData,
+                                totalPages: +res[0].toString(),
+                                currentPage: pageNo,
+                            })
+                        );
+                    } catch (error) {
+                        console.log(error);
+                        Error(
+                            error.message.includes('This Financial Insitution is not avtive')
+                            ? 'This Financial Insitution is deactiveted by admin, please contract for more info'
+                            : 'Error while fetching Financial Insitution list'
+                        );
+                    } finally {
+                        setListLoading(false);
+                    }
+                } else {
+                    if (fetchedData[pageNo].length === 0) {
+                        dispatch(
+                            setData({
+                                data: fetchedData[pageNo],
+                                totalPages: totalPageNumber,
+                                currentPage: pageNo 
+                            })
+                        );
+                    }
                 }
-            } else {
-                if (fetchedData[pageNo].length === 0) {
-                    dispatch(
-                        setData({
-                            data: fetchedData[pageNo],
-                            totalPages: totalPageNumber,
-                            currentPage: pageNo 
-                        })
-                    );
-                }
-            }
-        }, [apiInstance, dispatch]
+            }, [apiInstance, dispatch]
     );
 
-    const handleFIPagination = useCallback(async(
-        pageNo=0, fetchedData=FetchedDataType, totalPageNumber=0) => {
-            assert(
-                typeof pageNo === 'number',
-                'Invalid argument: pageNo must be a number'
-            );
-            assert(
-                fetchedData instanceof FetchedDataType,
-                'Invalid argument: fechedData must be FetchedDataType object'
-            );
-            assert(
-                typeof totalPageNumber === 'number',
-                'Invalid argument: TotalPageNumber must be a number'
-            );
-            if (!fetchedData[pageNo]) {
-                try {
-                    setListLoading(true);
-                    const res = await apiInstance.getClientofFI(pageNo);
-                    dispatch(setFetchedData({ pageNo: pageNo + "", data: res[1]}));
-                    dispatch(
-                        setData({
-                            data: res[1],
-                            TotalPage: +res[0].toString(),
-                            currentPage: pageNo,
-                        })
-                    );
-                } catch (error) {
-                    console.log(error);
-                    Error('Error while fetching client data');
-                } finally {
-                    setListLoading(false);
+    const handleFIPagination = useCallback(
+        async(
+            pageNo: number, 
+            fetchedData: FetchedDataType, 
+            totalPageNumber: number
+        ) => {
+                if (!fetchedData[pageNo]) {
+                    try {
+                        setListLoading(true);
+                        const res = await apiInstance.getClientofFI(pageNo);
+                        dispatch(setFetchedData({ pageNo: pageNo + "", data: res[1]}));
+                        dispatch(
+                            setData({
+                                data: res[1],
+                                totalPages: +res[0].toString(),
+                                currentPage: pageNo,
+                            })
+                        );
+                    } catch (error) {
+                        console.log(error);
+                        Error('Error while fetching client data');
+                    } finally {
+                        setListLoading(false);
+                    }
+                } else {
+                    if (fetchedData[pageNo].length === 0) {
+                        dispatch(
+                            setData({
+                                data: fetchedData[pageNo],
+                                totalPages: totalPageNumber,
+                                currentPage: pageNo 
+                            })
+                        );
+                    }
                 }
-            } else {
-                if (fetchedData[pageNo].length === 0) {
-                    dispatch(
-                        setData({
-                            data: fetchedData[pageNo],
-                            totalPages: totalPageNumber,
-                            currentPage: pageNo 
-                        })
-                    );
-                }
-            }
         }, [apiInstance, dispatch]
     );
     
-    const handleClientPagination = useCallback(async(
-        pageNo=0, fetchedData=FetchedDataType, totalPageNumber=0) => {
-            assert(
-                typeof pageNo === 'number',
-                'Invalid argument: pageNo must be a number'
-            );
-            assert(
-                fetchedData instanceof FetchedDataType,
-                'Invalid argument: fechedData must be FetchedDataType object'
-            );
-            assert(
-                typeof totalPageNumber === 'number',
-                'Invalid argument: TotalPageNumber must be a number'
-            );
+    const handleClientPagination = useCallback(
+        async(
+            pageNo: number, 
+            fetchedData: FetchedDataType, 
+            totalPageNumber: number) => {
             if (!fetchedData[pageNo]) {
                 try {
                     setListLoading(true);
@@ -563,7 +406,7 @@ export function useAPI() {
                     dispatch(
                         setData({
                             data: res[1],
-                            TotalPage: +res[0].toString(),
+                            totalPages: +res[0].toString(),
                             currentPage: pageNo,
                         })
                     );

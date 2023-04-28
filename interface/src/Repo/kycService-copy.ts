@@ -147,13 +147,13 @@ export class KycServices {
     async KYCVerification(data: {
         id: string;
         note:string,
-        isVerfied: boolean,
+        isVerified: boolean,
     }) {
         try {
             await this.enableETH();
             const res = await this._KycContract.KYCVerification(
                 data.id,
-                data.isVerfied,
+                data.isVerified,
                 data.note
             );
             return res
@@ -273,6 +273,6 @@ export const filter = {
     ],
 };
 
-export function Decodeuint8arr(uint8array) {
+export function Decodeuint8arr(uint8array: any) {
     return new TextDecoder("utf-8").decode(uint8array);
 };

@@ -1,4 +1,4 @@
-import { Client, FI, KYCRequest, User } from '../Repo/index.tx';
+import { Client, FI, KYCRequest, User } from '../Repo/index.ts';
 import {AUTH} from './actionType';
 
 export function setLoginStatus(payload: boolean) {
