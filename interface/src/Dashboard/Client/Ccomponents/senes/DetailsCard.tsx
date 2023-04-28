@@ -13,13 +13,16 @@ import { useNavigate } from "react-router-dom";
 import { useAPI } from "../../../Dcontexts/hooks/useAPI";
 import { useTheme } from "@mui/material";
 import { tokens } from "../../../Theme";
+import React from "react";
 
 export const DetailsCard = ({
-item = new KYCRequest() 
+    item
+}: {
+    item:KYCRequest
 }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [approvalFlag, setApprovalFlag] = useState(false || undefined);
-    const { actionOnKycRequest, removerDatahashPremission} = useAPI();
+    const [approvalFlag, setApprovalFlag] = useState<boolean | undefined>(undefined);
+    const { actionOnKYCRequest, removeKycPremission} = useAPI();
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
     const theme = useTheme();
@@ -29,13 +32,13 @@ item = new KYCRequest()
     const kycAction = async (notes = '') => {
         setLoader(true);
         if (approvalFlag !== undefined) {
-            await actionOnKycRequest(item.FI_ID, approvalFlag, notes);
+            await actionOnKYCRequest(item.FI_ID, approvalFlag, notes);
         } else {
             if((item.dataRequest === 1 
                 && item.status === 0) ||
                 item.status === 1
             )
-            await removerDatahashPremission(item.FI_ID, notes);
+            await removeKycPremission(item.FI_ID, notes);
         }
         setLoader(false);
     };
@@ -221,8 +224,10 @@ item = new KYCRequest()
                                     }}
                                     >
                                         <CheckCircleOutlinedIcon
-                                        sx={{cursor: 'pointer', fontSize:'20'}}
-                                        color={colors.greenAccent[500]}
+                                        sx={{
+                                            cursor: 'pointer', fontSize:'20', 
+                                            color:colors.greenAccent[500]}}
+                                        
                                         />
                                     </button>
                                 </Tooltip>
@@ -239,8 +244,8 @@ item = new KYCRequest()
                                 >
                                     <CancelOutlinedIcon 
                                     sx={{fontSize:'20', 
-                                    cursor:"pointer" }}  
-                                    color={colors.redAccent[500]} 
+                                    cursor:"pointer", 
+                                    color:colors.greenAccent[500]}}  
                                     />
                                 </button>
                                 </Tooltip>
@@ -260,9 +265,10 @@ item = new KYCRequest()
                                 <UndoRoundedIcon 
                                 sx={{
                                     fontSize:'20',
-                                    cursor:'pointer'
+                                    cursor:'pointer',
+                                    color:"#facc15"
                                 }}
-                                color="#facc15"
+                               
                                 />
                             </button>
                             </Tooltip>
@@ -276,8 +282,11 @@ item = new KYCRequest()
                             onClick={() => navigate(`/${item.FI_ID}`)}
                             >
                                 <GridViewOutlinedIcon 
-                                sx={{fontSize:'20', cursor:'pointer'}}
-                                color="#facc15"
+                                sx={{
+                                    fontSize:'20', 
+                                    cursor:'pointer', 
+                                    color:"#facc15"
+                                }}
                                 />
                             </button>
                         </Tooltip>                  
@@ -295,3 +304,5 @@ item = new KYCRequest()
         )
     );    
 }
+
+

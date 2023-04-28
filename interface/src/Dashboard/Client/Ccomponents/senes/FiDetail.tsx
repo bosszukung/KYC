@@ -1,17 +1,18 @@
 import { Box, FormControl, Input, useTheme, InputLabel } from "@mui/material";
 import {Button, Center, Heading, HStack, VStack, Text} from 'native-base';
 import { useEffect, useState } from "react";
-import {Sucess, Error} from '../../../../unities';
+import {Success, Error} from '../../../../unities';
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FI } from "../../../../Repo";
 import {useAPI} from '../../../Dcontexts/hooks/useAPI';
 import {useNavigate, useParams} from "react-router-dom";
 import { tokens } from "../../../Theme";
 import {PopHeader} from '../../../../componants/popHeader';
+import React from "react";
 
 export function FiDetials() {
-    const [data, setData] = useState(new FI({}));
-    const {getFiDetail} = useAPI();
+    const [data, setData] = useState({} as FI);
+    const {getFIDetail} = useAPI();
     const [inactiveFI, setInactiveFI] = useState(false);
     const {id} = useParams();
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function FiDetials() {
         (async () => {
             try {
                 if (id) {
-                    const result = await getFiDetail(id);
+                    const result = await getFIDetail(id);
                     if(result) {
                         setData(result);
                     }
@@ -39,7 +40,7 @@ export function FiDetials() {
                 setLoading(false);
             }
         })();
-    },[getFiDetail, id])
+    },[getFIDetail, id])
 
     return (
         <>
@@ -130,7 +131,7 @@ export function FiDetials() {
                                     </FormControl>
                                     <CopyToClipboard
                                     text={data.ID}
-                                    onCopy={() => Sucess("Address copied successfully")}>
+                                    onCopy={() => Success("Address copied successfully")}>
                                         <FormControl
                                         sx={{width:['100%', '45%']}}
                                         >

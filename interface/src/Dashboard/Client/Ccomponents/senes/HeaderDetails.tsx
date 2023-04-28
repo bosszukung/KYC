@@ -1,4 +1,5 @@
 import { Box, HStack, Text, VStack } from "native-base";
+import React from "react";
 
 export const HeaderDetails = () => {
   return (

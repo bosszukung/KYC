@@ -1,20 +1,26 @@
 import { useTheme, FormControl, InputLabel } from "@mui/material";
-import {Button, Modal, Text, TextArea} from 'native-base';
+import {Button, Modal, TextArea} from 'native-base';
 import { useState } from "react";
-import { useAPI } from "../../../Dcontexts/hooks/useAPI";
-import { KYCRequest } from "../../../../Repo";
 import { Error } from "../../../../unities";
 import { tokens } from "../../../Theme";
+import React from "react";
 
 export function ConfirmAction ({
-    modalVisible = false,
-    setModalVisible = () => {}, 
-    heading = '',
-    kycAction = () => {},
-    setApproval = () => {},
-    message = () => {}
+modalVisible,
+  setModalVisible,
+  heading,
+  kycAction,
+  setApproval,
+  message,
+}: {
+    modalVisible: boolean;
+    setModalVisible: Function;
+    heading: string;
+    kycAction: Function;
+    setApproval?: Function;
+    message: Function;
 }) {
-    const [notes, setNotes] = useState('');
+    const [notes, setNotes] = useState<string>('');
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -44,10 +50,9 @@ export function ConfirmAction ({
                         <InputLabel>{message()}</InputLabel>
                     </FormControl>
                     <TextArea
-                    placeholder="Enter Your Reason"
-                    value={notes}
-                    onChangeText={setNotes} 
-                    />
+                        placeholder="Enter Your Reason"
+                        value={notes}
+                        onChangeText={setNotes} autoCompleteType={undefined}                    />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button.Group space={2}>
