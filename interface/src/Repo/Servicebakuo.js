@@ -21,7 +21,8 @@ export class KYCServices {
 
     }
 
-    static getInstance()  {
+    static getInstance() {
+        this.instance = KYCServices();
         if (!KYCServices.instance) {
           KYCServices.instance = new KYCServices();
         };

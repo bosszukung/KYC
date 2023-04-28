@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/styled": "^11.10.6",
     "@metamask/detect-provider": "^2.0.0",
+    "@metamask/providers": "^10.2.1",
     "@moralisweb3/next": "^2.18.4",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.0",

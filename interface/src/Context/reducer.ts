@@ -1,8 +1,10 @@
 import { InitialState } from "./details";
+import { AUTH } from "./actionType";
+import { AuthAction, InitialStateType } from "./types";
 
-
-export function authReducer(state, action) {
-
+export function authReducer(
+  state: InitialStateType, 
+  action: AuthAction): InitialStateType {
   switch (action.type) {
     case "SET_LOGIN_STATUS":
       return { ...state, isUserLoggedIn: action.payload };
@@ -35,11 +37,12 @@ export function authReducer(state, action) {
         },
       };
   
-    case "RESET":
+    case AUTH.RESET:
       return InitialState;
   
     default:
       return state;
   }
 };
+export default authReducer
 

@@ -1,13 +1,17 @@
 import React, {createContext, useContext, useState} from "react";
 import {authReducer} from "./reducer"
 import { InitialState } from "./details";
+import { InitialStateType } from "./types";
 
-const AuthContext = createContext({
+const AuthContext = createContext<{
+    state: InitialStateType,
+    dispatch: React.Dispatch<any>
+  }> ({
     state: InitialState,
-    dispatch: () => null,
+    dispatch: () => null
   });
 
-export function AuthContextProvider({children}) {
+export function AuthContextProvider({children = React.ReactNode}) {
     const [state, dispatch] = useState(
         authReducer, InitialState
     );

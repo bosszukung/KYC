@@ -1,10 +1,11 @@
+import {InitialStateType}from './types'
 
-export const InitialState =  {
+export const InitialState: InitialStateType = {
     userDetails: {
         status: 1,
         position: 0,
         email: "",
-        id_: "",
+        ID: "",
         name: "",
     },
     isUserLoggedIn: false,
