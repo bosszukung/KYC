@@ -14,7 +14,7 @@ export class KycServices {
     private _accountAdress: string | undefined;
     static eventContract: Contract;
 
-    static getInstance(): KycServices {
+    public static getInstance(): KycServices {
         if (!KycServices.instance) {
           KycServices.instance = new KycServices();
         };
@@ -103,7 +103,7 @@ export class KycServices {
     };
 
     /* Financial Insitution Interface */ 
-    async getClientofFI(pageNumber: number) {
+    async getClientofFI(pageNumber: number): Promise<[number, KYCRequest[]]> {
         try {
             await this.enableETH();
             const res = await this._KycContract.getClientofFI(pageNumber);

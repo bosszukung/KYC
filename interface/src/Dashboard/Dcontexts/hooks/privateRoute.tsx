@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import {useAuthContext} from '../../../Context/authContext';
+import {useAuthContext} from '../../../Context/auth-Context';
 
 
 function PrivateRoute() {
