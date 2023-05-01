@@ -77,9 +77,9 @@
       "type": "event"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"ClientAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"ClientDataUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"clientName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"}],\"name\":\"dataHashUpdated\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Client.sol\":\"Client\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Appearance.sol\":{\"keccak256\":\"0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e\",\"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq\"]},\"project:/contracts/Client.sol\":{\"keccak256\":\"0xe3526db79c183fb2a6e53a9e75ed9f70f7f98fe8b355234fa9c4f0b05cd5e7b6\",\"license\":\"MIT and GPL-3.0\",\"urls\":[\"bzz-raw://30bfd4dc76854b8c22574a8276b58d5e3177a14b073b3bedf06227c5e9c3159c\",\"dweb:/ipfs/QmSr1tY8Zddd4gVL6hM2hrzRQ7Wr3uEBEb9B9w6MgN6HEu\"]},\"project:/contracts/Support.sol\":{\"keccak256\":\"0xaeadca47af845d5085a7df277acd27cfd874660940f19b20b66c1e8b0b3105c6\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://136914fb50228b178b37bb7597ef679ae3727b5baadcc43d34a82040944e3dfe\",\"dweb:/ipfs/QmeGAEJgYTDimrqfAUAYiu5sJA1g2NgRMGESTKo5Si2Jgm\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220fa09e6a3a1590829f78526763bb1245fc429ba795eff7e1869496af365d384c764736f6c634300080f0033",
-  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220fa09e6a3a1590829f78526763bb1245fc429ba795eff7e1869496af365d384c764736f6c634300080f0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"ClientAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"ClientDataUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"ID\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"clientName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"}],\"name\":\"dataHashUpdated\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Client.sol\":\"Client\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Appearance.sol\":{\"keccak256\":\"0x557476a97b63c46a948d7d157debcc0af66c1435d9c996cc89789617cbbaff51\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://086d203f79c295d70942cd00823e325dc34f1146e496b466822d1979eb103aa9\",\"dweb:/ipfs/QmU9mJxrKF83bX7EgmEjoopNYUTGofRXQ1nriwc4GPz5bj\"]},\"project:/contracts/Client.sol\":{\"keccak256\":\"0xe3526db79c183fb2a6e53a9e75ed9f70f7f98fe8b355234fa9c4f0b05cd5e7b6\",\"license\":\"MIT and GPL-3.0\",\"urls\":[\"bzz-raw://30bfd4dc76854b8c22574a8276b58d5e3177a14b073b3bedf06227c5e9c3159c\",\"dweb:/ipfs/QmSr1tY8Zddd4gVL6hM2hrzRQ7Wr3uEBEb9B9w6MgN6HEu\"]},\"project:/contracts/Support.sol\":{\"keccak256\":\"0xaeadca47af845d5085a7df277acd27cfd874660940f19b20b66c1e8b0b3105c6\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://136914fb50228b178b37bb7597ef679ae3727b5baadcc43d34a82040944e3dfe\",\"dweb:/ipfs/QmeGAEJgYTDimrqfAUAYiu5sJA1g2NgRMGESTKo5Si2Jgm\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212207bbbe0a76f62d80455c1bb03df937bb75fb697e6de87d836b72f7d3347da90dd64736f6c634300080f0033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212207bbbe0a76f62d80455c1bb03df937bb75fb697e6de87d836b72f7d3347da90dd64736f6c634300080f0033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
@@ -97,7 +97,7 @@
         270
       ],
       "support": [
-        2339
+        2307
       ]
     },
     "id": 595,
@@ -131,7 +131,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 595,
-        "sourceUnit": 2340,
+        "sourceUnit": 2308,
         "src": "105:23:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1010,10 +1010,10 @@
                               "name": "support",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2339,
+                              "referencedDeclaration": 2307,
                               "src": "705:7:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_support_$2339_$",
+                                "typeIdentifier": "t_type$_t_contract$_support_$2307_$",
                                 "typeString": "type(library support)"
                               }
                             },
@@ -1024,7 +1024,7 @@
                             "lValueRequested": false,
                             "memberName": "stringsCompare",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2318,
+                            "referencedDeclaration": 2286,
                             "src": "705:22:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_bool_$",
@@ -1562,10 +1562,10 @@
                             "name": "support",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2339,
+                            "referencedDeclaration": 2307,
                             "src": "1029:7:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_support_$2339_$",
+                              "typeIdentifier": "t_type$_t_contract$_support_$2307_$",
                               "typeString": "type(library support)"
                             }
                           },
@@ -1576,7 +1576,7 @@
                           "lValueRequested": false,
                           "memberName": "stringsCompare",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 2318,
+                          "referencedDeclaration": 2286,
                           "src": "1029:22:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_bool_$",
@@ -4161,7 +4161,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.8",
-  "updatedAt": "2023-04-04T15:13:55.472Z",
+  "updatedAt": "2023-04-30T15:36:03.783Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

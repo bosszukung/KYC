@@ -1,15 +1,15 @@
 {
   "contractName": "appearances",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Appearance.sol\":\"appearances\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Appearance.sol\":{\"keccak256\":\"0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e\",\"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212205210ae2efeedc2d0086a3cb7b18c23d62339a8feb3f52854d2a691d7e23e9c7d64736f6c634300080f0033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212205210ae2efeedc2d0086a3cb7b18c23d62339a8feb3f52854d2a691d7e23e9c7d64736f6c634300080f0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Appearance.sol\":\"appearances\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Appearance.sol\":{\"keccak256\":\"0x557476a97b63c46a948d7d157debcc0af66c1435d9c996cc89789617cbbaff51\",\"license\":\"GPL-3.0 and MIT\",\"urls\":[\"bzz-raw://086d203f79c295d70942cd00823e325dc34f1146e496b466822d1979eb103aa9\",\"dweb:/ipfs/QmU9mJxrKF83bX7EgmEjoopNYUTGofRXQ1nriwc4GPz5bj\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122028cb7976f87996b28602793ce006f52de8f370763e7aeb5145ca1599729b4a4b64736f6c634300080f0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122028cb7976f87996b28602793ce006f52de8f370763e7aeb5145ca1599729b4a4b64736f6c634300080f0033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "187:1700:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "187:1700:1:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: GPL-3.0 and MIT\n\npragma experimental ABIEncoderV2; \npragma solidity >=0.6.0;\n\n//The library manages all custom appearances that were used in the KYC process.\n\nlibrary appearances {\n    \n    enum Positions {\n        Admin, // 0\n        FI, // 1\n        Client // 2\n    }\n\n    enum FIStatus {\n        Active, // 0\n        Inactive // 1\n    }\n\n    enum KYCStatus {\n        Pending, // 0\n        KYCVerified, // 1\n        KYCFailed // 2\n    }\n\n    enum DataHashStatus {\n        Pending, // 0\n        Approved, // 1\n        Rejected // 2\n    }\n\n    struct User {\n        string name;\n        string email;\n        address ID;\n        Positions positions;\n        FIStatus status;\n    }\n\n    struct Client {\n        string name;\n        string email;\n        uint16 MobileNumber;\n        address ID;\n        address VerifiedBy; // Address of the FI only if KYC gets verified\n        string dataHash; // Documents will be stored in decentralised storage & a hash will be created for the same\n        uint256 dataUpdated;\n    }\n\n    struct FI {\n        string name;\n        string email;\n        address ID;\n        string SwiftCode;\n        uint16 KYCCount; // How many KCY's did this bank completed so far\n        FIStatus status; // RBI, we call \"admin\" here can disable the FI at any instance\n    }\n\n    struct KYCRequest {\n        string ID; // Combination of customer Id & bank is going to be unique\n        address user_ID;\n        string ClientName;\n        address FI_ID;\n        string FIName;\n        string dataHash;\n        uint256 updatedOn;\n        KYCStatus status;\n        DataHashStatus dataRequest; // Get approval from user to access the data\n        string additionalNotes; \n        /* Notes that can be added if KYC verification fails  OR\n         * if customer rejects the access & bank wants to re-request with some message\n         */\n    }\n}",
+  "sourceMap": "187:1701:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "187:1701:1:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-3.0 and MIT\n\npragma experimental ABIEncoderV2; \npragma solidity >=0.6.0;\n\n//The library manages all custom appearances that were used in the KYC process.\n\nlibrary appearances {\n    \n    enum Positions {\n        Admin, // 0\n        FI, // 1\n        Client // 2\n    }\n\n    enum FIStatus {\n        Active, // 0\n        Inactive // 1\n    }\n\n    enum KYCStatus {\n        Pending, // 0\n        KYCVerified, // 1\n        KYCFailed // 2\n    }\n\n    enum DataHashStatus {\n        Pending, // 0\n        Approved, // 1\n        Rejected // 2\n    }\n\n    struct User {\n        string name;\n        string email;\n        address ID;\n        Positions positions;\n        FIStatus status;\n    }\n\n    struct Client {\n        string name;\n        string email;\n        uint16 MobileNumber;\n        address ID;\n        address VerifiedBy; // Address of the FI only if KYC gets verified\n        string dataHash; // Documents will be stored in decentralised storage & a hash will be created for the same\n        uint256 dataUpdated;\n    }\n\n    struct FI {\n        string name;\n        string email;\n        address ID;\n        string SwiftCode;\n        uint16 KYCCount; // How many KCY's did this bank completed so far\n        FIStatus status; // RBI, we call \"admin\" here can disable the FI at any instance\n    }\n\n    struct KYCRequest {\n        string ID; // Combination of customer Id & bank is going to be unique\n        address user_ID;\n        string ClientName;\n        address FI_ID;\n        string FIName;\n        string dataHash; \n        uint256 updatedOn;\n        KYCStatus status;\n        DataHashStatus dataRequest; // Get approval from user to access the data\n        string additionalNotes; \n        /* Notes that can be added if KYC verification fails  OR\n         * if customer rejects the access & bank wants to re-request with some message\n         */\n    }\n}",
   "sourcePath": "/Users/aekkarajkuplakatee/Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol",
   "ast": {
     "absolutePath": "project:/contracts/Appearance.sol",
@@ -894,10 +894,10 @@
                 "id": 260,
                 "mutability": "mutable",
                 "name": "updatedOn",
-                "nameLocation": "1565:9:1",
+                "nameLocation": "1566:9:1",
                 "nodeType": "VariableDeclaration",
                 "scope": 269,
-                "src": "1557:17:1",
+                "src": "1558:17:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -908,7 +908,7 @@
                   "id": 259,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1557:7:1",
+                  "src": "1558:7:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -921,10 +921,10 @@
                 "id": 263,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "1594:6:1",
+                "nameLocation": "1595:6:1",
                 "nodeType": "VariableDeclaration",
                 "scope": 269,
-                "src": "1584:16:1",
+                "src": "1585:16:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -939,10 +939,10 @@
                     "name": "KYCStatus",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 200,
-                    "src": "1584:9:1"
+                    "src": "1585:9:1"
                   },
                   "referencedDeclaration": 200,
-                  "src": "1584:9:1",
+                  "src": "1585:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_KYCStatus_$200",
                     "typeString": "enum appearances.KYCStatus"
@@ -955,10 +955,10 @@
                 "id": 266,
                 "mutability": "mutable",
                 "name": "dataRequest",
-                "nameLocation": "1625:11:1",
+                "nameLocation": "1626:11:1",
                 "nodeType": "VariableDeclaration",
                 "scope": 269,
-                "src": "1610:26:1",
+                "src": "1611:26:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -973,10 +973,10 @@
                     "name": "DataHashStatus",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 204,
-                    "src": "1610:14:1"
+                    "src": "1611:14:1"
                   },
                   "referencedDeclaration": 204,
-                  "src": "1610:14:1",
+                  "src": "1611:14:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_DataHashStatus_$204",
                     "typeString": "enum appearances.DataHashStatus"
@@ -989,10 +989,10 @@
                 "id": 268,
                 "mutability": "mutable",
                 "name": "additionalNotes",
-                "nameLocation": "1698:15:1",
+                "nameLocation": "1699:15:1",
                 "nodeType": "VariableDeclaration",
                 "scope": 269,
-                "src": "1691:22:1",
+                "src": "1692:22:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1003,7 +1003,7 @@
                   "id": 267,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1691:6:1",
+                  "src": "1692:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1016,16 +1016,16 @@
             "nameLocation": "1335:10:1",
             "nodeType": "StructDefinition",
             "scope": 270,
-            "src": "1328:557:1",
+            "src": "1328:558:1",
             "visibility": "public"
           }
         ],
         "scope": 271,
-        "src": "187:1700:1",
+        "src": "187:1701:1",
         "usedErrors": []
       }
     ],
-    "src": "45:1842:1"
+    "src": "45:1843:1"
   },
   "compiler": {
     "name": "solc",
@@ -1033,7 +1033,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.8",
-  "updatedAt": "2023-04-04T15:13:55.471Z",
+  "updatedAt": "2023-04-30T15:36:03.781Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
