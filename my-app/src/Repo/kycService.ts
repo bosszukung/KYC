@@ -4,7 +4,7 @@ import {getCurrentEpoch} from "../unities";
 import {Contract, ethers,} from "ethers"
 
 
-let kycData = require("../../../Blokchain/build/KYC.json");
+let kycData = require("./KYC.json");
 let abi = kycData.abi;
 
 export class KycServices {

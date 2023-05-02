@@ -12,11 +12,10 @@ import printJS from "print-js";
 import {useNavigate, useLocation, useParams} from 'react-router-dom';
 import {useAPI} from '../../Dashboard/Dcontexts/hooks/useAPI'
 import { Client, DataHashStatus } from "../../Repo";
-import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS.js';
+import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS';
 import {DocumentStructure} from '../Profile/Componants/DocStructure';
 import CopyToClipboard from "react-copy-to-clipboard";
 import { tokens } from "../../Dashboard/Theme";
-import React from "react";
 
 
 export function EntiyDetials() {

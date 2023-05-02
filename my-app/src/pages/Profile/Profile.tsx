@@ -5,7 +5,7 @@ import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import React, {useEffect, useState} from 'react';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import {Card} from './Componants/card';
-import {Success, shorterString} from '../../unities';
+import {Success, shorterString, Error} from '../../unities';
 import {useAuthContext} from '../../Context/auth-Context';
 import CopyToClipboard from "react-copy-to-clipboard";
 import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS';
@@ -16,6 +16,7 @@ import { Client, KycServices } from '../../Repo';
 import {ActionConfirm} from './Componants/ActionConfirm';
 import {DocumentStructure} from './Componants/DocStructure';
 import { tokens } from '../../Dashboard/Theme';
+import { UseOCR } from '../../Dashboard/Dcontexts/hooks/useOCR';
 
 
 type docsType = {
@@ -54,7 +55,17 @@ export function ProfilePage() {
     async function handleFileChange (e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files) {
             const file = e.target.files[0];
-            const base64 = await EncodeImage(file);
+            const base64 = (await EncodeImage(file)) as string;
+            
+            try {
+                const analyzedDocument = await UseOCR(base64, myData.name);
+                console.log('Analyzed document:', analyzedDocument);
+                Success('Document analyzed successfully');
+            } catch (error) {
+                console.error('OCR analysis failed:', error);
+                Error('OCR analysis failed. Please try again.');
+            }
+
             setFileUrl(base64);
             setDocument("");
             setShowModal(false);
