@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "types": ["@types/json-schema"],
+    "types": ["@types/json-schema", "@types/node"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

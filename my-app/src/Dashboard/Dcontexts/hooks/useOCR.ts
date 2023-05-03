@@ -1,4 +1,4 @@
-import { AzureKeyCredential, DocumentAnalysisClient, AnalyzeResult, DocumentObjectField } from "@azure/ai-form-recognizer";
+import {AzureKeyCredential, DocumentAnalysisClient, AnalyzeResult, DocumentObjectField} from '@azure/ai-form-recognizer'
 import { Error } from "../../../unities";
 
 declare global {
@@ -15,9 +15,7 @@ const endpoint: any = process.env.FR_ENDPOINT;
 
 export async function UseOCR(documentUrl: string, inputName: string): Promise<boolean> {
   const client = new DocumentAnalysisClient(endpoint, new AzureKeyCredential(key));
-
   const poller = await client.beginAnalyzeDocumentFromUrl("prebuilt-idDocument", documentUrl);
-
   const result: AnalyzeResult = await poller.pollUntilDone();
 
   if (result && result.documents && result.documents.length > 0) {
@@ -25,7 +23,6 @@ export async function UseOCR(documentUrl: string, inputName: string): Promise<bo
 
     if (analyzedDocument.docType === "idDocument.driverLicense") {
       const { FirstName, LastName } = analyzedDocument.fields;
-
       const extractedName = `${FirstName?.content ?? ''} ${LastName?.content ?? ''}`.trim();
       return extractedName === inputName;
     } else if (analyzedDocument.docType === "idDocument.passport") {
@@ -35,7 +32,6 @@ export async function UseOCR(documentUrl: string, inputName: string): Promise<bo
 
       const machineReadableZone = analyzedDocument.fields.machineReadableZone as DocumentObjectField;
       const { FirstName, LastName } = machineReadableZone.properties;
-
       const extractedName = `${FirstName?.content ?? ''} ${LastName?.content ?? ''}`.trim();
       return extractedName === inputName;
     } else {
@@ -44,6 +40,5 @@ export async function UseOCR(documentUrl: string, inputName: string): Promise<bo
   } else {
     throw Error("Expected at least one document in the result.");
   }
-
   return false;
 }
