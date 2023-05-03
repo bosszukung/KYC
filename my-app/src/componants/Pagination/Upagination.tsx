@@ -5,7 +5,6 @@ import { useAuthContext } from "../../Context";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
-import React from "react";
 
 export function UserPagination() {
     const {
