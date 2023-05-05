@@ -11,7 +11,7 @@ function Home() {
                 <h4>Simplify KYC Compliance with The Blockchain Integration</h4>
                 <div className="home-btn">
                     <Link to="/login">
-                        <Button my="2" alignSelf="center">
+                        <Button my="2" alignSelf="center" bgColor={'darkslategrey'}> 
                             Get Start
                         </Button>
                     </Link>

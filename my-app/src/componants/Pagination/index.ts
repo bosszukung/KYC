@@ -1,3 +1,3 @@
-import * as A from './Apagination'
-import * as C from './CPagination'
-import * as U from './Upagination'
+export * as A from './Apagination'
+export * as C from './CPagination'
+export * as U from './Upagination'

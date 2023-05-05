@@ -25,34 +25,6 @@
     margin-bottom: 20px;
 }
 
-.submit-btn {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-
-
-}
-.submit-btns {
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 10px 35px;
-    text-align: center;
-    font-weight: bolder;
-    transition: all 0.3 ease-out;
-    margin-bottom: 20px;
-
-}
-
-.submit {
-    color: darkslategrey;
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-}
-
 .log {
     color: darkslategrey;
     font-weight: bold;

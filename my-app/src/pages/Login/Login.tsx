@@ -18,8 +18,6 @@ function Login() {
     getAccounts();
   }, [getAccounts]);
   
-
-
   return(
     <div>
       <div className="login">
@@ -27,7 +25,7 @@ function Login() {
           <h1>Log In</h1>
           <Button
             size="lg"
-            colorScheme="danger"
+            bgColor={"darkslategrey"}
             w="150"
             mt="5"
             onPress={() =>

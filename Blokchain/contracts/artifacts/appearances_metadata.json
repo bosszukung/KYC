@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.6+commit.11564f7e"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -18,9 +18,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Blokchain/contracts/Appearance.sol": "appearances"
+			"Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol": "appearances"
 		},
-		"evmVersion": "berlin",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -32,12 +32,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Blokchain/contracts/Appearance.sol": {
-			"keccak256": "0x3fdb263d0e56c8915d1430bceae1f942604bf08830e3d5af4c7bdc986ec773bd",
+		"Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol": {
+			"keccak256": "0x557476a97b63c46a948d7d157debcc0af66c1435d9c996cc89789617cbbaff51",
 			"license": "GPL-3.0 and MIT",
 			"urls": [
-				"bzz-raw://8d88c75bcd6f1e04add2a072bdee3bfbec14cc1e5fce1abfc34244afda94174e",
-				"dweb:/ipfs/QmUzBAQbbeCiGuSGZRESj7xw11sS2s795kyzUUGbKrxekq"
+				"bzz-raw://086d203f79c295d70942cd00823e325dc34f1146e496b466822d1979eb103aa9",
+				"dweb:/ipfs/QmU9mJxrKF83bX7EgmEjoopNYUTGofRXQ1nriwc4GPz5bj"
 			]
 		}
 	},

@@ -10,8 +10,8 @@ declare global {
     }
   }  
 
-const key: any = process.env.FR_KEY;
-const endpoint: any = process.env.FR_ENDPOINT;
+const key: any = process.env["1f8a4e8629014b179844b91df2886c2f"];
+const endpoint: any = process.env["https://ocrforkyc.cognitiveservices.azure.com/"];
 
 export async function UseOCR(documentUrl: string, inputName: string): Promise<boolean> {
   const client = new DocumentAnalysisClient(endpoint, new AzureKeyCredential(key));
