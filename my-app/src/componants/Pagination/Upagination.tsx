@@ -1,7 +1,7 @@
 import { Button, HStack, IconButton, Text } from "native-base";
 import { useNavigate } from "react-router-dom";
 import { useAPI } from "../../Dashboard/Dcontexts/hooks/useAPI"; 
-import { useAuthContext } from "../../Context";
+import { useAuthContext } from "../../Context/auth-context";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';

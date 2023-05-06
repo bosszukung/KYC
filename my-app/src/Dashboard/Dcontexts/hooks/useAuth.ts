@@ -7,11 +7,9 @@ import {
     setLoading,
     useAuthContext,
     setLoginStatus,
-} from '../../../Context';
+} from '../../../Context/auth-context';
 import {useAPI} from './useAPI'
 import {useLocation, useNavigate} from 'react-router-dom';
-
-
 
 let web3: Web3 | undefined = undefined;
 
@@ -55,7 +53,7 @@ export function useAuth() {
                 })
               );
               dispatch(setLoginStatus(true));
-              navigate((state.state as any)?.from || './dashboard')
+              navigate((state.state as any)?.from || '/')
             }
           }
         } else {
@@ -88,7 +86,7 @@ export function useAuth() {
               );
               dispatch(setLoginStatus(true));
               dispatch(setLoading(false));
-              navigate((state.state as any)?.from || "/dashboard");
+              navigate((state.state as any)?.from || "/");
             }
           }
         }

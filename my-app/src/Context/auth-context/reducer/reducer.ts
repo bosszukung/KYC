@@ -1,6 +1,6 @@
-import { InitialState } from "./details";
-import { AUTH } from "./actionType";
-import { AuthAction, InitialStateType } from "./types";
+import { InitialState } from "../details";
+import { AUTH } from "../Action-types";
+import { AuthAction, InitialStateType } from "../types";
 
 export function authReducer(
   state: InitialStateType, 

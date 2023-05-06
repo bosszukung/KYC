@@ -4,7 +4,7 @@ import {Center, Heading, HStack, Spinner, Text, VStack, Button, Input} from 'nat
 import {PopHeader} from '../../../componants/popHeader'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {useAuthContext} from '../../../Context/auth-Context';
+import {useAuthContext} from '../../../Context/auth-context/auth-context-provider';
 import {useAPI} from '../../Dcontexts/hooks/useAPI';
 import { KycServices } from "../../../Repo";
 import { Error } from "../../../unities";

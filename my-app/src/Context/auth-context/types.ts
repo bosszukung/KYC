@@ -1,5 +1,5 @@
-import {FI, Client, KYCRequest, User} from '../Repo/Function'
-import {AUTH} from './actionType'
+import {FI, Client, KYCRequest, User} from '../../Repo/Function'
+import {AUTH} from './Action-types'
 
 export type FetchedDataType = {
   [key: string]: (Client | FI | User | KYCRequest)[];

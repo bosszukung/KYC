@@ -7,7 +7,7 @@ import { CaseCount } from "../../componants/caseCount";
 import { DetailsCard } from "./Ccomponents/senes/DetailsCard";
 import { HeaderDetails } from "./Ccomponents/senes/HeaderDetails";
 import { useAPI } from "../Dcontexts/hooks/useAPI";
-import { useAuthContext } from "../../Context";
+import { useAuthContext } from "../../Context/auth-context";
 import { KYCRequest, KycServices } from "../../Repo";
 import { Error, costumerCaseCount } from "../../unities";
 import { useLocation, useNavigate } from "react-router-dom";

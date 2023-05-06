@@ -6,7 +6,7 @@ import React, {useEffect, useState} from 'react';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import {Card} from './Componants/card';
 import {Success, shorterString, Error} from '../../unities';
-import {useAuthContext} from '../../Context/auth-Context';
+import {useAuthContext} from '../../Context/auth-context/auth-context-provider';
 import CopyToClipboard from "react-copy-to-clipboard";
 import {useIPFS} from '../../Dashboard/Dcontexts/hooks/useIPFS';
 import {EncodeImage} from '../../unities/imageEncode'

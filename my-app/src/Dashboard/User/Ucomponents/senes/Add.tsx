@@ -4,7 +4,7 @@ import {Box, useTheme, InputLabel} from '@mui/material';
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {PopHeader} from '../../../../componants/popHeader';
-import {useAuthContext} from '../../../../Context/auth-Context';
+import {useAuthContext} from '../../../../Context/auth-context/auth-context-provider';
 import { KycServices, Client } from '../../../../Repo';
 import { Error, Success } from '../../../../unities';
 import {tokens} from '../../../Theme'

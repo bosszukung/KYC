@@ -3,7 +3,7 @@ import { ColorModeContext, useMode } from '../Theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import UTopbar from './Ucomponents/senes/manu/UTopbar';
 import USidebar from './Ucomponents/senes/manu/USidebar'
-import { Outlet } from 'react-router-dom';
+import UDashboard from './UDashboard';
 
 
 
@@ -27,7 +27,7 @@ export function User({ setShowNavbar, showNavbar}: {
                         <main className='content'>
                             <UTopbar  />
                             <div className='components'>
-                                <Outlet />
+                                <UDashboard />
                             </div>
                         </main>   
                     </div>

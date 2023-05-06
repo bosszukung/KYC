@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { setData, setFetchedData, useAuthContext} from '../../../Context';
-import { FetchedDataType } from "../../../Context/types"; 
+import { setData, setFetchedData, useAuthContext} from '../../../Context/auth-context';
+import { FetchedDataType } from "../../../Context/auth-context/types"; 
 import { FI, FIStatus, Client, KycServices, User } from "../../../Repo";
 import { Success, Error } from "../../../unities";
 

@@ -35,7 +35,7 @@ export class KycServices {
               
             //   await ethereum.request({
             //     method: "wallet_switchEthereumChain",
-            //     params: [{ chainId: `0x${Number(8).toString(16)}` }],
+            //     params: [{ chainId: `0x${Number(4).toString(16)}` }],
             //   });
               this._accountAdress = accounts[0];
               this._KycContract = this.getContract(contract_address);

@@ -1,16 +1,16 @@
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import {useAuthContext} from '../../../Context/auth-Context';
+import {useAuthContext} from '../../../Context/auth-context/auth-context-provider';
 
 
 export function PrivateRoute() {
   const { state: {isUserLoggedIn},
 } = useAuthContext();
-  const { pathname, search } = useLocation();
+  const state = useLocation();
   
   return isUserLoggedIn ? (
     <Outlet />
     ) : (
-    <Navigate replace to="/login" state={{ from: pathname + search }} />
+    <Navigate replace to="/" state={{ from: state.pathname + state.search }} />
   );
 }
 

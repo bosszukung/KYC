@@ -2,7 +2,7 @@ import { Avatar, Box, FormControl, InputLabel, useTheme } from "@mui/material";
 import { Center, Heading, HStack, Input, Pressable, VStack } from "native-base";
 import {useEffect, useState} from "react";
 import { Success, shorterString } from "../../../../unities";
-import { useAuthContext } from "../../../../Context";
+import { useAuthContext } from "../../../../Context/auth-context";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useAPI } from "../../../Dcontexts/hooks/useAPI";
 import { FI } from "../../../../Repo";

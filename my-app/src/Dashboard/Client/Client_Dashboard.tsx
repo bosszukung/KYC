@@ -3,7 +3,7 @@ import { ColorModeContext, useMode } from '../Theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import CTopbar from './Ccomponents/senes/manu/CTopbar';
 import CSidebar from './Ccomponents/senes/manu/CSidebar'
-import { Outlet } from 'react-router-dom';
+import CDashboard from './CDashboard';
 
 
 export function Client({ setShowNavbar, showNavbar}: {
@@ -26,7 +26,7 @@ export function Client({ setShowNavbar, showNavbar}: {
                         <main className='content'>
                             <CTopbar  />
                             <div className='components'>
-                                <Outlet />
+                                <CDashboard />
                             </div>
                         </main>   
                     </div>

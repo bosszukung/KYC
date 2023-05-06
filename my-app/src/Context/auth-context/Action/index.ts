@@ -1,5 +1,5 @@
-import { Client, FI, KYCRequest, User } from '../Repo';
-import {AUTH} from './actionType';
+import { Client, FI, KYCRequest, User } from '../../../Repo';
+import {AUTH} from '../Action-types';
 
 export function setLoginStatus(payload: boolean) {
     return {

@@ -8,7 +8,7 @@ import {CardDetails} from './Acomponents/AdminCard'
 import { HeaderDetails } from "./Acomponents/headerDetail";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAPI } from "../Dcontexts/hooks/useAPI";
-import { useAuthContext } from "../../Context";
+import { useAuthContext } from "../../Context/auth-context";
 import { KycServices, FI } from "../../Repo";
 import { adminCaseCount } from "../../unities";
 import {AdminPagination} from "../../componants/Pagination";

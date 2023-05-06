@@ -9,7 +9,7 @@ import { HeaderDetails } from "./Ucomponents/senes/HeaderDetails";
 import { SearchBox } from "../../componants/SearchBox";
 import { AddButton } from "../../componants/addButton";
 import { useAPI } from "../Dcontexts/hooks/useAPI";
-import { useAuthContext } from "../../Context";
+import { useAuthContext } from "../../Context/auth-context";
 import { KycServices, KYCRequest, KYCStatus } from "../../Repo";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Error, CaseCounts } from "../../unities";

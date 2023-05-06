@@ -10,7 +10,7 @@ export function Home() {
                 <h1>Automate KYC on Blockchian</h1>
                 <h4>Simplify KYC Compliance with The Blockchain Integration</h4>
                 <div className="home-btn">
-                    <Link to="/dashboard">
+                    <Link to="/login">
                         <Button my="2" alignSelf="center" bgColor={'darkslategrey'}> 
                             Get Start
                         </Button>

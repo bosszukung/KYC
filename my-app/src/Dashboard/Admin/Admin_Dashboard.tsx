@@ -3,7 +3,7 @@ import { ColorModeContext, useMode } from '../Theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import Topbar from './Acomponents/senes/manu/Topbar';
 import Sidebar from './Acomponents/senes/manu/Sidebar'
-import { Outlet } from 'react-router-dom';
+import ADashboard from './ADashboard';
 
 
 export function Admin({ setShowNavbar, showNavbar}:{
@@ -26,7 +26,7 @@ export function Admin({ setShowNavbar, showNavbar}:{
                         <main className='content'>
                             <Topbar  />
                             <div className='components'>
-                                <Outlet />
+                                <ADashboard />
                             </div>
                             
                         </main>   
