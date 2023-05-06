@@ -1,7 +1,6 @@
 import {Box, Typography, useTheme} from "@mui/material";
 import {tokens} from "../Theme";
 import AProgressCircle from "./AProgessCircle";
-import React from "react";
 
 const AStatBox = ({title, subtitle, icon, progress, increase}:
     {

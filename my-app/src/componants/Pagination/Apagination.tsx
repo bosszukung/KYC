@@ -31,7 +31,7 @@ export function AdminPagination() {
             variant={"ghost"}
             color="white"
             icon={<ArrowBackIosIcon />}
-            onPress={() => navigate(`/admim?page=${pageNo - 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo - 1}`)}
           />
         )}
         <HStack w="80px" justifyContent={"space-evenly"} mx="2">
@@ -39,7 +39,7 @@ export function AdminPagination() {
         </HStack>
         {pageNo < totalPageNumber && (
           <IconButton
-            onPress={() => navigate(`/admin?page=${pageNo + 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo + 1}`)}
             variant={"ghost"}
             color="white"
             icon={<ArrowForwardIosIcon />}
@@ -47,5 +47,6 @@ export function AdminPagination() {
         )}
       </HStack>
     </HStack>
-    )
+    );
 }
+export default AdminPagination;

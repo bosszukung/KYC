@@ -1,17 +1,91 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { tokens } from "../Theme";
 import CHeader from "./Ccomponents/senes/manu/CHeader";
-import EmailIcon from "@mui/icons-material/Email";
-import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import TrafficIcon from "@mui/icons-material/Traffic";
-import CStatBox from "./CStatBox";
-import CProgressCircle from "./CProgessCircle";
+import { useEffect, useState } from "react";
+import { HStack, Spinner, Text, VStack } from "native-base";
+import { CaseCount } from "../../componants/caseCount";
+import { DetailsCard } from "./Ccomponents/senes/DetailsCard";
+import { HeaderDetails } from "./Ccomponents/senes/HeaderDetails";
+import { useAPI } from "../Dcontexts/hooks/useAPI";
+import { useAuthContext } from "../../Context";
+import { KYCRequest, KycServices } from "../../Repo";
+import { Error, costumerCaseCount } from "../../unities";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ClientPagination } from "../../componants/Pagination";
+import { SearchBox } from "../../componants/SearchBox";
 
-const CDashboard = () => {
+
+export const CDashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [searchResult, setSearchResult] = useState<KYCRequest>(
+    {} as KYCRequest
+  )
+  const [searchResultExist, setSearchResultExist] = useState<
+  "Yes" | "No" | "pending"
+  >("pending");
+  const[searchText, setSearchText] = useState("");
+  const {
+    listLodaing,
+    searchForFI,
+    handleClientPagination,
+    getFIKycRequest,
+  } = useAPI();
+  const {
+    state: {data, fetchedData, totalPageNumber, pageNo}
+  } = useAuthContext();
+  const state = useLocation();
+  let navigate = useNavigate();
 
+  useEffect(() => {
+    if(searchText === "") {
+      setSearchResultExist("pending");
+      setSearchResult({} as KYCRequest)
+    }
+  }, [searchText]);
+
+  useEffect(() => {
+    const {search} = state;
+    search.length === 0 && navigate("/dashboard?page=1");
+  },[navigate, state])
+
+  useEffect(() => {
+    const { search } = state;
+    search.length !== 0 &&
+      handleClientPagination(+search.slice(-1), fetchedData, totalPageNumber);
+  }, [fetchedData, handleClientPagination, state, totalPageNumber]);
+
+  const searchOperation = async () => {
+    const re = /^0x[a-fA-F0-9]{40}$/;
+    if (!re.test(searchText)) {
+      Error("invalid Address");
+    } else {
+      try {
+        const res = await searchForFI(searchText);
+        if (res?.isFi) {
+          setSearchResultExist('Yes');
+        } else {
+          setSearchResultExist('No')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  };
+
+  useEffect(() => {
+    const listenToEvent = async () => {
+      KycServices.eventContract.on(
+        "Data Hash Permission Changed",
+        async (reqId, CleintID, FiID, status) => {
+          console.log("event", FiID)
+          getFIKycRequest(pageNo);
+          Error("Data Permission Changed Successfully");
+        }
+      )
+    }
+    listenToEvent();
+  }, [getFIKycRequest, pageNo])
 
   return (
     <Box m="20px">
@@ -37,20 +111,7 @@ const CDashboard = () => {
           alignContent= "center"
           justifyContent= "center"
         >
-          <CStatBox 
-            title = "12,361"
-            subtitle= "Emails Sent"
-            progress="0.75"
-            increase= "+14%"
-            icon={
-              <EmailIcon 
-                sx={{
-                  color: colors.greenAccent[600],
-                  fontSize: "26px"
-                }}
-              />
-            }
-          />
+          <CaseCount count={data.length} heading={"Registered Cases"} />
         </Box>
 
         <Box
@@ -62,101 +123,57 @@ const CDashboard = () => {
           alignContent= "center"
           justifyContent= "center"
         >
-          <CStatBox 
-            title = "431,225"
-            subtitle= "Sales Obtained"
-            progress="0.5"
-            increase= "+21%"
-            icon={
-              <PointOfSaleIcon 
-                sx={{
-                  color: colors.greenAccent[600],
-                  fontSize: "26px"
-                }}
-              />
-            }
+          <CaseCount
+            count={costumerCaseCount(data as KYCRequest[]).rejected}
+            heading={"Rejected Cases"}
           />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: "span 3",
-            backgroundColor:colors.primary[400]
-          }}
-          display= "flex" 
-          alignContent= "center"
-          justifyContent= "center"
-        >
-          <CStatBox 
-            title = "32,441"
-            subtitle= "New Client"
-            progress="0.30"
-            increase= "+5%"
-            icon={
-              <PersonAddIcon
-                sx={{
-                  color: colors.greenAccent[600],
-                  fontSize: "26px"
-                }}
-              />
-            }
-          />
-        </Box>
-
-        <Box
-          sx={{
-            gridColumn: "span 3",
-            backgroundColor:colors.primary[400]
-          }}
-          display= "flex" 
-          alignContent= "center"
-          justifyContent= "center"
-        >
-          <CStatBox 
-            title = "1,325,134"
-            subtitle= "Traffic Inbound"
-            progress="0.80"
-            increase= "+43%"
-            icon={
-              <TrafficIcon 
-                sx={{
-                  color: colors.greenAccent[600],
-                  fontSize: "26px"
-                }}
-              />
-            }
-          />
-        </Box>
-
-        <Box
-        sx={{
-          gridColumn: "span 4",
-          backgroundColor:colors.primary[400],
-          gridRow: 'span 2'
-        }}
-          p="30px"
-        >
-          <Typography variant="h5" fontWeight="600">
-            Campaign
-          </Typography>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            mt="25px"
-          >
-            <CProgressCircle size="125" />
-            <Typography
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
-            </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
-          </Box>
         </Box>
       </Box>
+      <VStack>
+        <HStack
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        flexDirection={["column", "row"]}
+        mb={'5'}
+        >
+          <Text
+          textTransform={"capitalize"}
+          fontWeight={"semibold"}
+          fontSize={"lg"}
+          color="white">
+            My Individual Cases
+          </Text>
+          <SearchBox
+              searchText={searchText}
+              setSearchText={setSearchText}
+              searchOperation={searchOperation}
+            />
+        </HStack>
+        <VStack
+        alignItems={"center"} 
+        space={5} width="100%"
+        >
+          <Box
+          width={['90vw', '100%']}
+          overflow={['scroll', 'unset']}
+          >
+            <HeaderDetails />
+            {listLodaing ? (
+              <Spinner size={'lg'} />
+            ) : (
+              searchResultExist === 'pending' &&
+              ([...data].reverse() as KYCRequest[]).map(
+                (item:KYCRequest) => <DetailsCard item={item} />
+              )
+            )}
+            ?
+          </Box>
+          {searchResultExist === 'Yes' && <DetailsCard item={searchResult} />}
+          {searchResultExist === 'No' && 
+          <Text>Financial Institution Dose not Exist</Text>}
+        </VStack>
+      </VStack>
+      <ClientPagination />
     </Box>
   );
 };

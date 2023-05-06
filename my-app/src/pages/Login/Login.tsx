@@ -7,7 +7,7 @@ import {useAuth} from '../../Dashboard/Dcontexts/hooks/useAuth'
 import { Button } from "native-base";
 
 
-function Login() {
+export function Login() {
   const navigate = useNavigate();
   const {
     state: {isUserLoggedIn},

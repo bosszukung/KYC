@@ -15,7 +15,7 @@ import AddModeratorOutlinedIcon from '@mui/icons-material/AddModeratorOutlined';
 
 
 const Item = ({ title, to, icon, selected, setSelected}:{
-  title:any; 
+  title:string; 
   to:any 
   icon:any; 
   selected:any; 
@@ -126,7 +126,7 @@ const CSidebar = () => {
             <Box paddingLeft={isCollapsed ? undefined : "10%"}>
               <Item
                 title="Dashboard"
-                to="/client"
+                to="/dashboard"
                 icon={<HomeOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected} />
@@ -174,7 +174,7 @@ const CSidebar = () => {
               </Typography>
               <Item
                 title="Pie Chart"
-                to="./cpie"
+                to="#"
                 icon={<PieChartOutlineOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected} />

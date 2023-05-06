@@ -1,8 +1,7 @@
-
 import '../../App.css'
 import './About.css'
 
-function About() {
+export function About() {
     return(
         <div className='about'>
             <div className='about-container'>

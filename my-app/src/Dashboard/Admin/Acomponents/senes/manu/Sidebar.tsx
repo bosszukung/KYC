@@ -16,7 +16,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected}:
   {
-    title:any; 
+    title:string; 
     to:any; 
     icon:any;
     selected:any; 
@@ -127,7 +127,7 @@ const Sidebar = () => {
             <Box paddingLeft={isCollapsed ? undefined : "10%"}>
               <Item
                 title="Dashboard"
-                to="/admin"
+                to="/dashboard"
                 icon={<HomeOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected} />
@@ -141,7 +141,7 @@ const Sidebar = () => {
               </Typography>
               <Item
                 title="Financial Institutions"
-                to="./fi"
+                to="#"
                 icon={<AccountBalanceOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected} />
@@ -181,7 +181,7 @@ const Sidebar = () => {
               </Typography>
               <Item
                 title="Pie Chart"
-                to="apie"
+                to="#"
                 icon={<PieChartOutlineOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected} />

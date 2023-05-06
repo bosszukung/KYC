@@ -6,8 +6,8 @@ import Sidebar from './Acomponents/senes/manu/Sidebar'
 import { Outlet } from 'react-router-dom';
 
 
-function Admin({ setShowNavbar, showNavbar}:{
-    setShowNavbar:any; 
+export function Admin({ setShowNavbar, showNavbar}:{
+    setShowNavbar: Function; 
     showNavbar:boolean;
 }) {
     useEffect(() => {

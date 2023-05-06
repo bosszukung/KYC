@@ -90,7 +90,7 @@ export function EntiyDetials() {
                     >
                         No Data Found 
                     </Text>
-                    <Button mt="5" onPress={() => navigate("/")}>
+                    <Button mt="5" onPress={() => navigate("/dashboard")}>
                         Go Home
                     </Button>
                 </Center>

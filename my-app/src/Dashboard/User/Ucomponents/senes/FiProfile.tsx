@@ -1,6 +1,6 @@
 import { Avatar, Box, FormControl, InputLabel, useTheme } from "@mui/material";
 import { Center, Heading, HStack, Input, Pressable, VStack } from "native-base";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import { Success, shorterString } from "../../../../unities";
 import { useAuthContext } from "../../../../Context";
 import CopyToClipboard from "react-copy-to-clipboard";

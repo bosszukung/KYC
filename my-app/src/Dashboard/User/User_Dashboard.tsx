@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import { ColorModeContext, useMode } from '../Theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import UTopbar from './Ucomponents/senes/manu/UTopbar';
@@ -7,8 +7,8 @@ import { Outlet } from 'react-router-dom';
 
 
 
-function User({ setShowNavbar, showNavbar}: {
-    setShowNavbar:any; 
+export function User({ setShowNavbar, showNavbar}: {
+    setShowNavbar:Function; 
     showNavbar:boolean;
 }) {
     useEffect(() => {

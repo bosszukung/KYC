@@ -31,7 +31,7 @@ export function UserPagination() {
             variant={"ghost"}
             color="white"
             icon={<ArrowBackIosIcon />}
-            onPress={() => navigate(`/user?page=${pageNo - 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo - 1}`)}
           />
         )}
         <HStack w="80px" justifyContent={"space-evenly"} mx="2">
@@ -39,7 +39,7 @@ export function UserPagination() {
         </HStack>
         {pageNo < totalPageNumber && (
           <IconButton
-            onPress={() => navigate(`/user?page=${pageNo + 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo + 1}`)}
             variant={"ghost"}
             color="white"
             icon={<ArrowForwardIosIcon />}

@@ -7,32 +7,32 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "187:1701:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "187:1701:1:-:0;;;;;;;;",
+  "sourceMap": "187:1701:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "187:1701:0:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0 and MIT\n\npragma experimental ABIEncoderV2; \npragma solidity >=0.6.0;\n\n//The library manages all custom appearances that were used in the KYC process.\n\nlibrary appearances {\n    \n    enum Positions {\n        Admin, // 0\n        FI, // 1\n        Client // 2\n    }\n\n    enum FIStatus {\n        Active, // 0\n        Inactive // 1\n    }\n\n    enum KYCStatus {\n        Pending, // 0\n        KYCVerified, // 1\n        KYCFailed // 2\n    }\n\n    enum DataHashStatus {\n        Pending, // 0\n        Approved, // 1\n        Rejected // 2\n    }\n\n    struct User {\n        string name;\n        string email;\n        address ID;\n        Positions positions;\n        FIStatus status;\n    }\n\n    struct Client {\n        string name;\n        string email;\n        uint16 MobileNumber;\n        address ID;\n        address VerifiedBy; // Address of the FI only if KYC gets verified\n        string dataHash; // Documents will be stored in decentralised storage & a hash will be created for the same\n        uint256 dataUpdated;\n    }\n\n    struct FI {\n        string name;\n        string email;\n        address ID;\n        string SwiftCode;\n        uint16 KYCCount; // How many KCY's did this bank completed so far\n        FIStatus status; // RBI, we call \"admin\" here can disable the FI at any instance\n    }\n\n    struct KYCRequest {\n        string ID; // Combination of customer Id & bank is going to be unique\n        address user_ID;\n        string ClientName;\n        address FI_ID;\n        string FIName;\n        string dataHash; \n        uint256 updatedOn;\n        KYCStatus status;\n        DataHashStatus dataRequest; // Get approval from user to access the data\n        string additionalNotes; \n        /* Notes that can be added if KYC verification fails  OR\n         * if customer rejects the access & bank wants to re-request with some message\n         */\n    }\n}",
   "sourcePath": "/Users/aekkarajkuplakatee/Desktop/Dissertation/KYC/Blokchain/contracts/Appearance.sol",
   "ast": {
     "absolutePath": "project:/contracts/Appearance.sol",
     "exportedSymbols": {
       "appearances": [
-        270
+        83
       ]
     },
-    "id": 271,
+    "id": 84,
     "license": "GPL-3.0 and MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 188,
+        "id": 1,
         "literals": [
           "experimental",
           "ABIEncoderV2"
         ],
         "nodeType": "PragmaDirective",
-        "src": "45:33:1"
+        "src": "45:33:0"
       },
       {
-        "id": 189,
+        "id": 2,
         "literals": [
           "solidity",
           ">=",
@@ -40,7 +40,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "80:24:1"
+        "src": "80:24:0"
       },
       {
         "abstract": false,
@@ -49,144 +49,144 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 270,
+        "id": 83,
         "linearizedBaseContracts": [
-          270
+          83
         ],
         "name": "appearances",
-        "nameLocation": "195:11:1",
+        "nameLocation": "195:11:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "appearances.Positions",
-            "id": 193,
+            "id": 6,
             "members": [
               {
-                "id": 190,
+                "id": 3,
                 "name": "Admin",
-                "nameLocation": "243:5:1",
+                "nameLocation": "243:5:0",
                 "nodeType": "EnumValue",
-                "src": "243:5:1"
+                "src": "243:5:0"
               },
               {
-                "id": 191,
+                "id": 4,
                 "name": "FI",
-                "nameLocation": "263:2:1",
+                "nameLocation": "263:2:0",
                 "nodeType": "EnumValue",
-                "src": "263:2:1"
+                "src": "263:2:0"
               },
               {
-                "id": 192,
+                "id": 5,
                 "name": "Client",
-                "nameLocation": "280:6:1",
+                "nameLocation": "280:6:0",
                 "nodeType": "EnumValue",
-                "src": "280:6:1"
+                "src": "280:6:0"
               }
             ],
             "name": "Positions",
-            "nameLocation": "223:9:1",
+            "nameLocation": "223:9:0",
             "nodeType": "EnumDefinition",
-            "src": "218:79:1"
+            "src": "218:79:0"
           },
           {
             "canonicalName": "appearances.FIStatus",
-            "id": 196,
+            "id": 9,
             "members": [
               {
-                "id": 194,
+                "id": 7,
                 "name": "Active",
-                "nameLocation": "327:6:1",
+                "nameLocation": "327:6:0",
                 "nodeType": "EnumValue",
-                "src": "327:6:1"
+                "src": "327:6:0"
               },
               {
-                "id": 195,
+                "id": 8,
                 "name": "Inactive",
-                "nameLocation": "348:8:1",
+                "nameLocation": "348:8:0",
                 "nodeType": "EnumValue",
-                "src": "348:8:1"
+                "src": "348:8:0"
               }
             ],
             "name": "FIStatus",
-            "nameLocation": "308:8:1",
+            "nameLocation": "308:8:0",
             "nodeType": "EnumDefinition",
-            "src": "303:64:1"
+            "src": "303:64:0"
           },
           {
             "canonicalName": "appearances.KYCStatus",
-            "id": 200,
+            "id": 13,
             "members": [
               {
-                "id": 197,
+                "id": 10,
                 "name": "Pending",
-                "nameLocation": "398:7:1",
+                "nameLocation": "398:7:0",
                 "nodeType": "EnumValue",
-                "src": "398:7:1"
+                "src": "398:7:0"
               },
               {
-                "id": 198,
+                "id": 11,
                 "name": "KYCVerified",
-                "nameLocation": "420:11:1",
+                "nameLocation": "420:11:0",
                 "nodeType": "EnumValue",
-                "src": "420:11:1"
+                "src": "420:11:0"
               },
               {
-                "id": 199,
+                "id": 12,
                 "name": "KYCFailed",
-                "nameLocation": "446:9:1",
+                "nameLocation": "446:9:0",
                 "nodeType": "EnumValue",
-                "src": "446:9:1"
+                "src": "446:9:0"
               }
             ],
             "name": "KYCStatus",
-            "nameLocation": "378:9:1",
+            "nameLocation": "378:9:0",
             "nodeType": "EnumDefinition",
-            "src": "373:93:1"
+            "src": "373:93:0"
           },
           {
             "canonicalName": "appearances.DataHashStatus",
-            "id": 204,
+            "id": 17,
             "members": [
               {
-                "id": 201,
+                "id": 14,
                 "name": "Pending",
-                "nameLocation": "502:7:1",
+                "nameLocation": "502:7:0",
                 "nodeType": "EnumValue",
-                "src": "502:7:1"
+                "src": "502:7:0"
               },
               {
-                "id": 202,
+                "id": 15,
                 "name": "Approved",
-                "nameLocation": "524:8:1",
+                "nameLocation": "524:8:0",
                 "nodeType": "EnumValue",
-                "src": "524:8:1"
+                "src": "524:8:0"
               },
               {
-                "id": 203,
+                "id": 16,
                 "name": "Rejected",
-                "nameLocation": "547:8:1",
+                "nameLocation": "547:8:0",
                 "nodeType": "EnumValue",
-                "src": "547:8:1"
+                "src": "547:8:0"
               }
             ],
             "name": "DataHashStatus",
-            "nameLocation": "477:14:1",
+            "nameLocation": "477:14:0",
             "nodeType": "EnumDefinition",
-            "src": "472:94:1"
+            "src": "472:94:0"
           },
           {
             "canonicalName": "appearances.User",
-            "id": 217,
+            "id": 30,
             "members": [
               {
                 "constant": false,
-                "id": 206,
+                "id": 19,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "601:4:1",
+                "nameLocation": "601:4:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 217,
-                "src": "594:11:1",
+                "scope": 30,
+                "src": "594:11:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -194,10 +194,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 205,
+                  "id": 18,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "594:6:1",
+                  "src": "594:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -207,13 +207,13 @@
               },
               {
                 "constant": false,
-                "id": 208,
+                "id": 21,
                 "mutability": "mutable",
                 "name": "email",
-                "nameLocation": "622:5:1",
+                "nameLocation": "622:5:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 217,
-                "src": "615:12:1",
+                "scope": 30,
+                "src": "615:12:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -221,10 +221,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 207,
+                  "id": 20,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "615:6:1",
+                  "src": "615:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -234,13 +234,13 @@
               },
               {
                 "constant": false,
-                "id": 210,
+                "id": 23,
                 "mutability": "mutable",
                 "name": "ID",
-                "nameLocation": "645:2:1",
+                "nameLocation": "645:2:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 217,
-                "src": "637:10:1",
+                "scope": 30,
+                "src": "637:10:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -248,10 +248,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 209,
+                  "id": 22,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "637:7:1",
+                  "src": "637:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -262,33 +262,33 @@
               },
               {
                 "constant": false,
-                "id": 213,
+                "id": 26,
                 "mutability": "mutable",
                 "name": "positions",
-                "nameLocation": "667:9:1",
+                "nameLocation": "667:9:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 217,
-                "src": "657:19:1",
+                "scope": 30,
+                "src": "657:19:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_Positions_$193",
+                  "typeIdentifier": "t_enum$_Positions_$6",
                   "typeString": "enum appearances.Positions"
                 },
                 "typeName": {
-                  "id": 212,
+                  "id": 25,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 211,
+                    "id": 24,
                     "name": "Positions",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 193,
-                    "src": "657:9:1"
+                    "referencedDeclaration": 6,
+                    "src": "657:9:0"
                   },
-                  "referencedDeclaration": 193,
-                  "src": "657:9:1",
+                  "referencedDeclaration": 6,
+                  "src": "657:9:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Positions_$193",
+                    "typeIdentifier": "t_enum$_Positions_$6",
                     "typeString": "enum appearances.Positions"
                   }
                 },
@@ -296,33 +296,33 @@
               },
               {
                 "constant": false,
-                "id": 216,
+                "id": 29,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "695:6:1",
+                "nameLocation": "695:6:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 217,
-                "src": "686:15:1",
+                "scope": 30,
+                "src": "686:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_FIStatus_$196",
+                  "typeIdentifier": "t_enum$_FIStatus_$9",
                   "typeString": "enum appearances.FIStatus"
                 },
                 "typeName": {
-                  "id": 215,
+                  "id": 28,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 214,
+                    "id": 27,
                     "name": "FIStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 196,
-                    "src": "686:8:1"
+                    "referencedDeclaration": 9,
+                    "src": "686:8:0"
                   },
-                  "referencedDeclaration": 196,
-                  "src": "686:8:1",
+                  "referencedDeclaration": 9,
+                  "src": "686:8:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_FIStatus_$196",
+                    "typeIdentifier": "t_enum$_FIStatus_$9",
                     "typeString": "enum appearances.FIStatus"
                   }
                 },
@@ -330,25 +330,25 @@
               }
             ],
             "name": "User",
-            "nameLocation": "579:4:1",
+            "nameLocation": "579:4:0",
             "nodeType": "StructDefinition",
-            "scope": 270,
-            "src": "572:136:1",
+            "scope": 83,
+            "src": "572:136:0",
             "visibility": "public"
           },
           {
             "canonicalName": "appearances.Client",
-            "id": 232,
+            "id": 45,
             "members": [
               {
                 "constant": false,
-                "id": 219,
+                "id": 32,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "745:4:1",
+                "nameLocation": "745:4:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "738:11:1",
+                "scope": 45,
+                "src": "738:11:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -356,10 +356,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 218,
+                  "id": 31,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "738:6:1",
+                  "src": "738:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -369,13 +369,13 @@
               },
               {
                 "constant": false,
-                "id": 221,
+                "id": 34,
                 "mutability": "mutable",
                 "name": "email",
-                "nameLocation": "766:5:1",
+                "nameLocation": "766:5:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "759:12:1",
+                "scope": 45,
+                "src": "759:12:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -383,10 +383,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 220,
+                  "id": 33,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "759:6:1",
+                  "src": "759:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -396,13 +396,13 @@
               },
               {
                 "constant": false,
-                "id": 223,
+                "id": 36,
                 "mutability": "mutable",
                 "name": "MobileNumber",
-                "nameLocation": "788:12:1",
+                "nameLocation": "788:12:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "781:19:1",
+                "scope": 45,
+                "src": "781:19:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -410,10 +410,10 @@
                   "typeString": "uint16"
                 },
                 "typeName": {
-                  "id": 222,
+                  "id": 35,
                   "name": "uint16",
                   "nodeType": "ElementaryTypeName",
-                  "src": "781:6:1",
+                  "src": "781:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint16",
                     "typeString": "uint16"
@@ -423,13 +423,13 @@
               },
               {
                 "constant": false,
-                "id": 225,
+                "id": 38,
                 "mutability": "mutable",
                 "name": "ID",
-                "nameLocation": "818:2:1",
+                "nameLocation": "818:2:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "810:10:1",
+                "scope": 45,
+                "src": "810:10:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -437,10 +437,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 224,
+                  "id": 37,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "810:7:1",
+                  "src": "810:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -451,13 +451,13 @@
               },
               {
                 "constant": false,
-                "id": 227,
+                "id": 40,
                 "mutability": "mutable",
                 "name": "VerifiedBy",
-                "nameLocation": "838:10:1",
+                "nameLocation": "838:10:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "830:18:1",
+                "scope": 45,
+                "src": "830:18:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -465,10 +465,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 226,
+                  "id": 39,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "830:7:1",
+                  "src": "830:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -479,13 +479,13 @@
               },
               {
                 "constant": false,
-                "id": 229,
+                "id": 42,
                 "mutability": "mutable",
                 "name": "dataHash",
-                "nameLocation": "912:8:1",
+                "nameLocation": "912:8:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "905:15:1",
+                "scope": 45,
+                "src": "905:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -493,10 +493,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 228,
+                  "id": 41,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "905:6:1",
+                  "src": "905:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -506,13 +506,13 @@
               },
               {
                 "constant": false,
-                "id": 231,
+                "id": 44,
                 "mutability": "mutable",
                 "name": "dataUpdated",
-                "nameLocation": "1029:11:1",
+                "nameLocation": "1029:11:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 232,
-                "src": "1021:19:1",
+                "scope": 45,
+                "src": "1021:19:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -520,10 +520,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 230,
+                  "id": 43,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1021:7:1",
+                  "src": "1021:7:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -533,25 +533,25 @@
               }
             ],
             "name": "Client",
-            "nameLocation": "721:6:1",
+            "nameLocation": "721:6:0",
             "nodeType": "StructDefinition",
-            "scope": 270,
-            "src": "714:333:1",
+            "scope": 83,
+            "src": "714:333:0",
             "visibility": "public"
           },
           {
             "canonicalName": "appearances.FI",
-            "id": 246,
+            "id": 59,
             "members": [
               {
                 "constant": false,
-                "id": 234,
+                "id": 47,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "1080:4:1",
+                "nameLocation": "1080:4:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1073:11:1",
+                "scope": 59,
+                "src": "1073:11:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -559,10 +559,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 233,
+                  "id": 46,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1073:6:1",
+                  "src": "1073:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -572,13 +572,13 @@
               },
               {
                 "constant": false,
-                "id": 236,
+                "id": 49,
                 "mutability": "mutable",
                 "name": "email",
-                "nameLocation": "1101:5:1",
+                "nameLocation": "1101:5:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1094:12:1",
+                "scope": 59,
+                "src": "1094:12:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -586,10 +586,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 235,
+                  "id": 48,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1094:6:1",
+                  "src": "1094:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -599,13 +599,13 @@
               },
               {
                 "constant": false,
-                "id": 238,
+                "id": 51,
                 "mutability": "mutable",
                 "name": "ID",
-                "nameLocation": "1124:2:1",
+                "nameLocation": "1124:2:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1116:10:1",
+                "scope": 59,
+                "src": "1116:10:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -613,10 +613,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 237,
+                  "id": 50,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1116:7:1",
+                  "src": "1116:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -627,13 +627,13 @@
               },
               {
                 "constant": false,
-                "id": 240,
+                "id": 53,
                 "mutability": "mutable",
                 "name": "SwiftCode",
-                "nameLocation": "1143:9:1",
+                "nameLocation": "1143:9:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1136:16:1",
+                "scope": 59,
+                "src": "1136:16:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -641,10 +641,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 239,
+                  "id": 52,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1136:6:1",
+                  "src": "1136:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -654,13 +654,13 @@
               },
               {
                 "constant": false,
-                "id": 242,
+                "id": 55,
                 "mutability": "mutable",
                 "name": "KYCCount",
-                "nameLocation": "1169:8:1",
+                "nameLocation": "1169:8:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1162:15:1",
+                "scope": 59,
+                "src": "1162:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -668,10 +668,10 @@
                   "typeString": "uint16"
                 },
                 "typeName": {
-                  "id": 241,
+                  "id": 54,
                   "name": "uint16",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1162:6:1",
+                  "src": "1162:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint16",
                     "typeString": "uint16"
@@ -681,33 +681,33 @@
               },
               {
                 "constant": false,
-                "id": 245,
+                "id": 58,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "1245:6:1",
+                "nameLocation": "1245:6:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 246,
-                "src": "1236:15:1",
+                "scope": 59,
+                "src": "1236:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_FIStatus_$196",
+                  "typeIdentifier": "t_enum$_FIStatus_$9",
                   "typeString": "enum appearances.FIStatus"
                 },
                 "typeName": {
-                  "id": 244,
+                  "id": 57,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 243,
+                    "id": 56,
                     "name": "FIStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 196,
-                    "src": "1236:8:1"
+                    "referencedDeclaration": 9,
+                    "src": "1236:8:0"
                   },
-                  "referencedDeclaration": 196,
-                  "src": "1236:8:1",
+                  "referencedDeclaration": 9,
+                  "src": "1236:8:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_FIStatus_$196",
+                    "typeIdentifier": "t_enum$_FIStatus_$9",
                     "typeString": "enum appearances.FIStatus"
                   }
                 },
@@ -715,25 +715,25 @@
               }
             ],
             "name": "FI",
-            "nameLocation": "1060:2:1",
+            "nameLocation": "1060:2:0",
             "nodeType": "StructDefinition",
-            "scope": 270,
-            "src": "1053:269:1",
+            "scope": 83,
+            "src": "1053:269:0",
             "visibility": "public"
           },
           {
             "canonicalName": "appearances.KYCRequest",
-            "id": 269,
+            "id": 82,
             "members": [
               {
                 "constant": false,
-                "id": 248,
+                "id": 61,
                 "mutability": "mutable",
                 "name": "ID",
-                "nameLocation": "1363:2:1",
+                "nameLocation": "1363:2:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1356:9:1",
+                "scope": 82,
+                "src": "1356:9:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -741,10 +741,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 247,
+                  "id": 60,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1356:6:1",
+                  "src": "1356:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -754,13 +754,13 @@
               },
               {
                 "constant": false,
-                "id": 250,
+                "id": 63,
                 "mutability": "mutable",
                 "name": "user_ID",
-                "nameLocation": "1442:7:1",
+                "nameLocation": "1442:7:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1434:15:1",
+                "scope": 82,
+                "src": "1434:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -768,10 +768,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 249,
+                  "id": 62,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1434:7:1",
+                  "src": "1434:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -782,13 +782,13 @@
               },
               {
                 "constant": false,
-                "id": 252,
+                "id": 65,
                 "mutability": "mutable",
                 "name": "ClientName",
-                "nameLocation": "1466:10:1",
+                "nameLocation": "1466:10:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1459:17:1",
+                "scope": 82,
+                "src": "1459:17:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -796,10 +796,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 251,
+                  "id": 64,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1459:6:1",
+                  "src": "1459:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -809,13 +809,13 @@
               },
               {
                 "constant": false,
-                "id": 254,
+                "id": 67,
                 "mutability": "mutable",
                 "name": "FI_ID",
-                "nameLocation": "1494:5:1",
+                "nameLocation": "1494:5:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1486:13:1",
+                "scope": 82,
+                "src": "1486:13:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -823,10 +823,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 253,
+                  "id": 66,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1486:7:1",
+                  "src": "1486:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -837,13 +837,13 @@
               },
               {
                 "constant": false,
-                "id": 256,
+                "id": 69,
                 "mutability": "mutable",
                 "name": "FIName",
-                "nameLocation": "1516:6:1",
+                "nameLocation": "1516:6:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1509:13:1",
+                "scope": 82,
+                "src": "1509:13:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -851,10 +851,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 255,
+                  "id": 68,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1509:6:1",
+                  "src": "1509:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -864,13 +864,13 @@
               },
               {
                 "constant": false,
-                "id": 258,
+                "id": 71,
                 "mutability": "mutable",
                 "name": "dataHash",
-                "nameLocation": "1539:8:1",
+                "nameLocation": "1539:8:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1532:15:1",
+                "scope": 82,
+                "src": "1532:15:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -878,10 +878,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 257,
+                  "id": 70,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1532:6:1",
+                  "src": "1532:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -891,13 +891,13 @@
               },
               {
                 "constant": false,
-                "id": 260,
+                "id": 73,
                 "mutability": "mutable",
                 "name": "updatedOn",
-                "nameLocation": "1566:9:1",
+                "nameLocation": "1566:9:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1558:17:1",
+                "scope": 82,
+                "src": "1558:17:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -905,10 +905,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 259,
+                  "id": 72,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1558:7:1",
+                  "src": "1558:7:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -918,33 +918,33 @@
               },
               {
                 "constant": false,
-                "id": 263,
+                "id": 76,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "1595:6:1",
+                "nameLocation": "1595:6:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1585:16:1",
+                "scope": 82,
+                "src": "1585:16:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_KYCStatus_$200",
+                  "typeIdentifier": "t_enum$_KYCStatus_$13",
                   "typeString": "enum appearances.KYCStatus"
                 },
                 "typeName": {
-                  "id": 262,
+                  "id": 75,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 261,
+                    "id": 74,
                     "name": "KYCStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 200,
-                    "src": "1585:9:1"
+                    "referencedDeclaration": 13,
+                    "src": "1585:9:0"
                   },
-                  "referencedDeclaration": 200,
-                  "src": "1585:9:1",
+                  "referencedDeclaration": 13,
+                  "src": "1585:9:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_KYCStatus_$200",
+                    "typeIdentifier": "t_enum$_KYCStatus_$13",
                     "typeString": "enum appearances.KYCStatus"
                   }
                 },
@@ -952,33 +952,33 @@
               },
               {
                 "constant": false,
-                "id": 266,
+                "id": 79,
                 "mutability": "mutable",
                 "name": "dataRequest",
-                "nameLocation": "1626:11:1",
+                "nameLocation": "1626:11:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1611:26:1",
+                "scope": 82,
+                "src": "1611:26:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_DataHashStatus_$204",
+                  "typeIdentifier": "t_enum$_DataHashStatus_$17",
                   "typeString": "enum appearances.DataHashStatus"
                 },
                 "typeName": {
-                  "id": 265,
+                  "id": 78,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 264,
+                    "id": 77,
                     "name": "DataHashStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 204,
-                    "src": "1611:14:1"
+                    "referencedDeclaration": 17,
+                    "src": "1611:14:0"
                   },
-                  "referencedDeclaration": 204,
-                  "src": "1611:14:1",
+                  "referencedDeclaration": 17,
+                  "src": "1611:14:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_DataHashStatus_$204",
+                    "typeIdentifier": "t_enum$_DataHashStatus_$17",
                     "typeString": "enum appearances.DataHashStatus"
                   }
                 },
@@ -986,13 +986,13 @@
               },
               {
                 "constant": false,
-                "id": 268,
+                "id": 81,
                 "mutability": "mutable",
                 "name": "additionalNotes",
-                "nameLocation": "1699:15:1",
+                "nameLocation": "1699:15:0",
                 "nodeType": "VariableDeclaration",
-                "scope": 269,
-                "src": "1692:22:1",
+                "scope": 82,
+                "src": "1692:22:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1000,10 +1000,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 267,
+                  "id": 80,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1692:6:1",
+                  "src": "1692:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1013,27 +1013,35 @@
               }
             ],
             "name": "KYCRequest",
-            "nameLocation": "1335:10:1",
+            "nameLocation": "1335:10:0",
             "nodeType": "StructDefinition",
-            "scope": 270,
-            "src": "1328:558:1",
+            "scope": 83,
+            "src": "1328:558:0",
             "visibility": "public"
           }
         ],
-        "scope": 271,
-        "src": "187:1701:1",
+        "scope": 84,
+        "src": "187:1701:0",
         "usedErrors": []
       }
     ],
-    "src": "45:1843:1"
+    "src": "45:1843:0"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.15+commit.e14f2714.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xEc530ec05AbD96490d4fC5a56C601723296DD37c",
+      "transactionHash": "0x3b2fe254099992cbeaff27fc539d0b3fa63661a39365a880ebf278085fba6fe0"
+    }
+  },
   "schemaVersion": "3.4.8",
-  "updatedAt": "2023-04-30T15:36:03.781Z",
+  "updatedAt": "2023-05-06T14:05:07.499Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

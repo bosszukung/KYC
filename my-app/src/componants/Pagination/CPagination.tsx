@@ -31,7 +31,7 @@ export function ClientPagination() {
             variant={"ghost"}
             color="white"
             icon={<ArrowBackIosIcon />}
-            onPress={() => navigate(`/client?page=${pageNo - 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo - 1}`)}
           />
         )}
         <HStack w="80px" justifyContent={"space-evenly"} mx="2">
@@ -39,7 +39,7 @@ export function ClientPagination() {
         </HStack>
         {pageNo < totalPageNumber && (
           <IconButton
-            onPress={() => navigate(`/client?page=${pageNo + 1}`)}
+            onPress={() => navigate(`/dashboard?page=${pageNo + 1}`)}
             variant={"ghost"}
             color="white"
             icon={<ArrowForwardIosIcon />}

@@ -1,3 +1,3 @@
-export * as A from './Apagination'
-export * as C from './CPagination'
-export * as U from './Upagination'
+export * from './Apagination'
+export * from './CPagination'
+export * from './Upagination'

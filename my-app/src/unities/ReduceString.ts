@@ -6,7 +6,7 @@ export const shorterString = (address: string) => {
     return firstfix + lastfix;
 };
 
-export function CaseCount (data: KYCRequest[] ) {
+export function CaseCounts (data: KYCRequest[] ) {
     
     type Dec = {approved: number; rejected: number } ;
     const count = data.reduce(

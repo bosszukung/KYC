@@ -3,7 +3,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from '../Theme';
 import Header from "./Acomponents/senes/manu/Header";
 import { mockDataTeam } from "../Dcontexts/mockdata";
-import React from "react";
 
 const FIT = () => {
     const theme = useTheme();

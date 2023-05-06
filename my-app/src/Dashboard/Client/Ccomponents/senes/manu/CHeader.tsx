@@ -1,11 +1,10 @@
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../../../../Theme";
-import React from "react";
 
 
 const CHeader = ({ title, subtitle }: {
-  title:any; 
-  subtitle:any;
+  title:string; 
+  subtitle:string;
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import CHeader from "../manu/CHeader";
 import CPieChart from '../../../CPieChart'
-import React from "react";
+
 
 const CPie = () => {
   return (

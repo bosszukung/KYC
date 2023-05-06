@@ -6,12 +6,12 @@ import { tokens } from "../../../Theme";
 
 
 export function ConfirmAction ({
-modalVisible,
-  setModalVisible,
-  heading,
-  kycAction,
-  setApproval,
-  message,
+    modalVisible,
+    setModalVisible,
+    heading,
+    kycAction,
+    setApproval,
+    message,
 }: {
     modalVisible: boolean;
     setModalVisible: Function;

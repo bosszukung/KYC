@@ -13,7 +13,7 @@ export function FiDetials() {
     const [data, setData] = useState({} as FI);
     const {getFIDetail} = useAPI();
     const [inactiveFI, setInactiveFI] = useState(false);
-    const {id} = useParams();
+    const {ID} = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const theme = useTheme();
@@ -22,8 +22,8 @@ export function FiDetials() {
     useEffect(() => {
         (async () => {
             try {
-                if (id) {
-                    const result = await getFIDetail(id);
+                if (ID) {
+                    const result = await getFIDetail(ID);
                     if(result) {
                         setData(result);
                     }
@@ -39,7 +39,7 @@ export function FiDetials() {
                 setLoading(false);
             }
         })();
-    },[getFIDetail, id])
+    },[getFIDetail, ID])
 
     return (
         <>
@@ -73,7 +73,7 @@ export function FiDetials() {
                             bgColor={colors.blueAccent[800]}
                             _hover={{ bgColor: colors.blueAccent[600]}}
                             maxWidth={'50%'}
-                            onPress={() => navigate('/CDashboard')}
+                            onPress={() => navigate('/dashboard')}
                             >
                                 Go Back
                             </Button>

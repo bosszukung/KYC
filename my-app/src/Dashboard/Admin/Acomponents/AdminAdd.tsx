@@ -8,7 +8,6 @@ import {useAuthContext} from '../../../Context/auth-Context';
 import {useAPI} from '../../Dcontexts/hooks/useAPI';
 import { KycServices } from "../../../Repo";
 import { Error } from "../../../unities";
-import React from "react";
 
 type userDetails = {
     name: string;
@@ -65,7 +64,7 @@ export function AddPage() {
                     email: "",
                     SwiftCode: "",
                 });
-                navigate('/admin');
+                navigate("/dashboard");
             }
         }catch (error) {
             console.log(error);

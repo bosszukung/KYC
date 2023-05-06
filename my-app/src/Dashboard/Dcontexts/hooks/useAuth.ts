@@ -30,13 +30,13 @@ export function useAuth() {
       if (!web3){
         try {
           await window.ethereum.enable()
-          web3 = new Web3(window.ethereum);
+          web3 = new Web3((window as any).ethereum);
         } catch (error) {
           Error("Please allow MetaMask");
           return;
         }
       }
-      const accounts = await window.ethereum.request({method: "eth_requestAccounts"});
+      const accounts = await (window as any).ethereum.request({method: "eth_requestAccounts"});
       if (accounts.length !==0) {
         console.log("Connected", accounts[0]);
         localStorage.setItem("walletAddress", accounts[0]);
@@ -55,7 +55,7 @@ export function useAuth() {
                 })
               );
               dispatch(setLoginStatus(true));
-              navigate((state.state as any)?.from || './Dashboard')
+              navigate((state.state as any)?.from || './dashboard')
             }
           }
         } else {
@@ -88,7 +88,7 @@ export function useAuth() {
               );
               dispatch(setLoginStatus(true));
               dispatch(setLoading(false));
-              navigate((state.state as any)?.from || "/Dashboard");
+              navigate((state.state as any)?.from || "/dashboard");
             }
           }
         }
@@ -104,9 +104,7 @@ export function useAuth() {
   const disConnect = useCallback(async () => {
     dispatch(resetStates());
     dispatch(setLoginStatus(false));
-    console.log(setLoginStatus)
-    navigate((state.state)?.from || '/')
-  }, [dispatch, navigate, state.state?.from]);
+  }, [dispatch]);
 
   return {
     connect,

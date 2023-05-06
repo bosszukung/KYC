@@ -303,9 +303,9 @@ export function useAPI() {
         }
     }, [apiInstance]);
 
-    const getFIDetail = useCallback(async(id: string) => {
+    const getFIDetail = useCallback(async(ID: string) => {
         try {
-            const res = await apiInstance.getFIDetails(id);
+            const res = await apiInstance.getFIDetails(ID);
             return res;
         } catch (error) {
             throw error;

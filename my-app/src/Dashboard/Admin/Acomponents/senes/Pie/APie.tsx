@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import Header from "../manu/Header";
 import APieChart from "../../../APieChart";
-import React from "react";
 
 const APie = () => {
   return (

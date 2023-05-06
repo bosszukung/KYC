@@ -5,7 +5,7 @@ import {Contract, ethers,} from "ethers"
 
 
 let kycData = require("./KYC.json");
-let abi = kycData.abi;
+let abi = kycData["abi"]
 
 export class KycServices {
     private static instance: KycServices;
@@ -32,10 +32,11 @@ export class KycServices {
             const accounts = await ethereum.request({
                 method: "eth_requestAccounts",
               });
-              await ethereum.request({
-                method: "wallet_switchEthereumChain",
-                params: [{ chainId: `0x${Number(4).toString(16)}` }],
-              });
+              
+            //   await ethereum.request({
+            //     method: "wallet_switchEthereumChain",
+            //     params: [{ chainId: `0x${Number(8).toString(16)}` }],
+            //   });
               this._accountAdress = accounts[0];
               this._KycContract = this.getContract(contract_address);
               KycServices.eventContract = this._KycContract;
@@ -50,10 +51,10 @@ export class KycServices {
         return await this.walletChecking();
     };
 
-    getContract(contractAddress: string) {
+    getContract(contract_address: string) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const singer = provider.getSigner();
-        return new ethers.Contract(contractAddress, abi, singer)
+        return new ethers.Contract(contract_address, abi, singer)
     };   
 
     /* Admin Interface */

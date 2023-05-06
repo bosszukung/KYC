@@ -9,7 +9,6 @@ import { ModalEdit } from "./modalEdit";
 import { tokens } from "../../Theme";
 import { Success } from "../../../unities";
 import { green } from "@mui/material/colors";
-import React from "react";
 
 export const CardDetails = ({item}: {item: FI}) => {
     const theme = useTheme();
