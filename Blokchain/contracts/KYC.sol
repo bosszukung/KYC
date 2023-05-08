@@ -241,7 +241,7 @@ contract KYC is Client, FI {
     }
 
     // Function to update the user proflie.
-    function updateProfile(string memory name, string memory email, uint16 MobileNumber)
+    function updateProfile(string memory name, string memory email, uint256 MobileNumber)
     public isClientValid(msg.sender) {
         getProflieUpdate(name, email, MobileNumber);
         users[msg.sender].name = name;

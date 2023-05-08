@@ -41,7 +41,7 @@ library appearances {
     struct Client {
         string name;
         string email;
-        uint16 MobileNumber;
+        uint256 MobileNumber;
         address ID;
         address VerifiedBy; // Address of the FI only if KYC gets verified
         string dataHash; // Documents will be stored in decentralised storage & a hash will be created for the same

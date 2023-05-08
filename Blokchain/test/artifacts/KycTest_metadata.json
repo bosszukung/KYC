@@ -1,0 +1,93 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "isBankSBI",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blokchain/test/KYCTest.sol": "KycTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blokchain/contracts/Appearance.sol": {
+			"keccak256": "0x557476a97b63c46a948d7d157debcc0af66c1435d9c996cc89789617cbbaff51",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://086d203f79c295d70942cd00823e325dc34f1146e496b466822d1979eb103aa9",
+				"dweb:/ipfs/QmU9mJxrKF83bX7EgmEjoopNYUTGofRXQ1nriwc4GPz5bj"
+			]
+		},
+		"Blokchain/contracts/Client.sol": {
+			"keccak256": "0xe3526db79c183fb2a6e53a9e75ed9f70f7f98fe8b355234fa9c4f0b05cd5e7b6",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://30bfd4dc76854b8c22574a8276b58d5e3177a14b073b3bedf06227c5e9c3159c",
+				"dweb:/ipfs/QmSr1tY8Zddd4gVL6hM2hrzRQ7Wr3uEBEb9B9w6MgN6HEu"
+			]
+		},
+		"Blokchain/contracts/FI.sol": {
+			"keccak256": "0xb2acc26aa8b3ad50757c5691747db56639388ee86a33a91eb8b8b2e3a93c7410",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://1854835e5abd18c3a943d135f37879a5240d254402f54bbe2c6e010d390b402f",
+				"dweb:/ipfs/QmQbUG2qtc1giWScxvqarVtsj26jL8GoZy3AhAvMr7dw71"
+			]
+		},
+		"Blokchain/contracts/KYC.sol": {
+			"keccak256": "0x3bc7632186a0bc0f4a153e31a049c9e6224a9b8d5504290080d5b835b489174a",
+			"license": "MIT and GPL-3.0",
+			"urls": [
+				"bzz-raw://be5065cb8d8d9596d88e090b5fb2050841d01c93a3738ef37fe6cf8ecdef9390",
+				"dweb:/ipfs/QmTVssrvFkQERJHmBbVdJXBZ7XjNPoGzsq3ay8HycDU2Xc"
+			]
+		},
+		"Blokchain/contracts/Support.sol": {
+			"keccak256": "0xaeadca47af845d5085a7df277acd27cfd874660940f19b20b66c1e8b0b3105c6",
+			"license": "GPL-3.0 and MIT",
+			"urls": [
+				"bzz-raw://136914fb50228b178b37bb7597ef679ae3727b5baadcc43d34a82040944e3dfe",
+				"dweb:/ipfs/QmeGAEJgYTDimrqfAUAYiu5sJA1g2NgRMGESTKo5Si2Jgm"
+			]
+		},
+		"Blokchain/test/KYCTest.sol": {
+			"keccak256": "0x7cae05291ae41f3699cb98a667641495577ea01e33e1cc600f325d4010401a85",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://4851f766f1c72acf692f5ffbe6f86c5e8b78330e9e28d20c5fa1fdb308de31b0",
+				"dweb:/ipfs/QmRVCU3Zaj6AMtJXboi84LHk8obeG1jasQypZWMH4WZmeb"
+			]
+		}
+	},
+	"version": 1
+}

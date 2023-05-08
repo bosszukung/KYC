@@ -49,7 +49,9 @@ contract FI {
 
     // Function to add the FI
     function addFI(appearances.FI memory fiAdd) internal {
-        require(finance[fiAdd.ID].ID == address(0), "This Financial Institution is existed");
+        require(finance[fiAdd.ID].ID == address(0), 
+        "This Financial Institution is existed");
+        finance[fiAdd.ID] = fiAdd;
         FIsList.push(fiAdd.ID);
         emit FIadded(fiAdd.ID, fiAdd.name, fiAdd.email, fiAdd.SwiftCode);
     } 

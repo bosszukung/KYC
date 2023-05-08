@@ -22,13 +22,13 @@ library support {
             uint256 endIndex // Ending index of the current page
         ) 
         {
-            uint256 remainder_ = users.length % 20;
-            pages = users.length / 20;
+            uint256 remainder_ = users.length % 25;
+            pages = users.length / 25;
 
             if (remainder_ > 0) pages++;
-            pageLength = 20;
-            startIndex = 20 * (pageNumber - 1);
-            endIndex = 20 * pageNumber;
+            pageLength = 25;
+            startIndex = 25 * (pageNumber - 1);
+            endIndex = 25 * pageNumber;
 
             if (pageNumber > pages) // Page requested is not existing
             { 

@@ -9,8 +9,7 @@ declare global {
       }
     }
   }  
-
-const key: any = process.env["1f8a4e8629014b179844b91df2886c2f"];
+  const key: any = process.env["1f8a4e8629014b179844b91df2886c2f"];
 const endpoint: any = process.env["https://ocrforkyc.cognitiveservices.azure.com/"];
 
 export async function UseOCR(documentUrl: string, inputName: string): Promise<boolean> {
@@ -20,7 +19,6 @@ export async function UseOCR(documentUrl: string, inputName: string): Promise<bo
 
   if (result && result.documents && result.documents.length > 0) {
     const analyzedDocument = result.documents[0];
-
     if (analyzedDocument.docType === "idDocument.driverLicense") {
       const { FirstName, LastName } = analyzedDocument.fields;
       const extractedName = `${FirstName?.content ?? ''} ${LastName?.content ?? ''}`.trim();
@@ -29,7 +27,6 @@ export async function UseOCR(documentUrl: string, inputName: string): Promise<bo
       if (!analyzedDocument.fields.machineReadableZone) {
         throw Error("No Machine Readable Zone extracted from passport.");
       }
-
       const machineReadableZone = analyzedDocument.fields.machineReadableZone as DocumentObjectField;
       const { FirstName, LastName } = machineReadableZone.properties;
       const extractedName = `${FirstName?.content ?? ''} ${LastName?.content ?? ''}`.trim();

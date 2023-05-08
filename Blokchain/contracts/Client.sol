@@ -40,7 +40,7 @@ contract Client {
     function getProflieUpdate(
         string memory name,
         string memory email,
-        uint16 MobileNumber
+        uint256 MobileNumber
     ) internal {
         client[msg.sender].name = name;
         client[msg.sender].email = email;
