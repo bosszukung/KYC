@@ -1,5 +1,5 @@
 from flask import Flask
-import AZ
+from . import AZ
 
 app = Flask(__name__)
 
