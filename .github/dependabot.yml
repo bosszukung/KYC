@@ -1,0 +1,35 @@
+version: 2
+updates:
+  # NPM dependencies for my-app
+  - package-ecosystem: "npm"
+    directory: "/my-app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bosszukung"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "chore(deps):"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+
+  # Python dependencies for ocr
+  - package-ecosystem: "pip"
+    directory: "/ocr"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:15"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bosszukung"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "chore(deps):"
+      include: "scope"
