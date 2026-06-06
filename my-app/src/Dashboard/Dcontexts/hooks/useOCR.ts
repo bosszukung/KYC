@@ -9,8 +9,11 @@ declare global {
       }
     }
   }  
-  const key: any = process.env["1f8a4e8629014b179844b91df2886c2f"];
-const endpoint: any = process.env["https://ocrforkyc.cognitiveservices.azure.com/"];
+  // SECURITY: the Azure key must NOT live in frontend code. Read from env vars
+// at build time. For production, run OCR on a backend so the key is never
+// shipped to the browser. (CRA exposes only REACT_APP_*-prefixed vars.)
+const key: string = process.env.REACT_APP_FR_KEY ?? "";
+const endpoint: string = process.env.REACT_APP_FR_ENDPOINT ?? "";
 
 export async function UseOCR(documentUrl: string, inputName: string): Promise<boolean> {
   const client = new DocumentAnalysisClient(endpoint, new AzureKeyCredential(key));
