@@ -16,73 +16,78 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.formrecognizer import DocumentAnalysisClient
 
 
-endpoint = "YOUR_FORM_RECOGNIZER_ENDPOINT"
-key = "YOUR_FORM_RECOGNIZER_KEY"
+import os
+endpoint = os.environ.get("FR_ENDPOINT", "")
+key = os.environ.get("FR_KEY", "")
 
 # sample document
 formUrl = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png"
 
-document_analysis_client = DocumentAnalysisClient(
-        endpoint=endpoint, credential=AzureKeyCredential(key)
-    )
+def analyze():
+    document_analysis_client = DocumentAnalysisClient(
+            endpoint=endpoint, credential=AzureKeyCredential(key)
+        )
     
-poller = document_analysis_client.begin_analyze_document_from_url("prebuilt-idDocument", formUrl)
-id_documents = poller.result()
+    poller = document_analysis_client.begin_analyze_document_from_url("prebuilt-idDocument", formUrl)
+    id_documents = poller.result()
 
-for idx, id_document in enumerate(id_documents.documents):
-    print("--------Recognizing ID document #{}--------".format(idx + 1))
-    first_name = id_document.fields.get("FirstName")
-    if first_name:
-        print(
-            "First Name: {} has confidence: {}".format(
-                first_name.value, first_name.confidence
+    for idx, id_document in enumerate(id_documents.documents):
+        print("--------Recognizing ID document #{}--------".format(idx + 1))
+        first_name = id_document.fields.get("FirstName")
+        if first_name:
+            print(
+                "First Name: {} has confidence: {}".format(
+                    first_name.value, first_name.confidence
+                )
             )
-        )
-    last_name = id_document.fields.get("LastName")
-    if last_name:
-        print(
-            "Last Name: {} has confidence: {}".format(
-                last_name.value, last_name.confidence
+        last_name = id_document.fields.get("LastName")
+        if last_name:
+            print(
+                "Last Name: {} has confidence: {}".format(
+                    last_name.value, last_name.confidence
+                )
             )
-        )
-    document_number = id_document.fields.get("DocumentNumber")
-    if document_number:
-        print(
-            "Document Number: {} has confidence: {}".format(
-                document_number.value, document_number.confidence
+        document_number = id_document.fields.get("DocumentNumber")
+        if document_number:
+            print(
+                "Document Number: {} has confidence: {}".format(
+                    document_number.value, document_number.confidence
+                )
             )
-        )
-    dob = id_document.fields.get("DateOfBirth")
-    if dob:
-        print(
-            "Date of Birth: {} has confidence: {}".format(dob.value, dob.confidence)
-        )
-    doe = id_document.fields.get("DateOfExpiration")
-    if doe:
-        print(
-            "Date of Expiration: {} has confidence: {}".format(
-                doe.value, doe.confidence
+        dob = id_document.fields.get("DateOfBirth")
+        if dob:
+            print(
+                "Date of Birth: {} has confidence: {}".format(dob.value, dob.confidence)
             )
-        )
-    sex = id_document.fields.get("Sex")
-    if sex:
-        print("Sex: {} has confidence: {}".format(sex.value, sex.confidence))
-    address = id_document.fields.get("Address")
-    if address:
-        print(
-            "Address: {} has confidence: {}".format(
-                address.value, address.confidence
+        doe = id_document.fields.get("DateOfExpiration")
+        if doe:
+            print(
+                "Date of Expiration: {} has confidence: {}".format(
+                    doe.value, doe.confidence
+                )
             )
-        )
-    country_region = id_document.fields.get("CountryRegion")
-    if country_region:
-        print(
-            "Country/Region: {} has confidence: {}".format(
-                country_region.value, country_region.confidence
+        sex = id_document.fields.get("Sex")
+        if sex:
+            print("Sex: {} has confidence: {}".format(sex.value, sex.confidence))
+        address = id_document.fields.get("Address")
+        if address:
+            print(
+                "Address: {} has confidence: {}".format(
+                    address.value, address.confidence
+                )
             )
-        )
-    region = id_document.fields.get("Region")
-    if region:
-        print(
-            "Region: {} has confidence: {}".format(region.value, region.confidence)
-        )
+        country_region = id_document.fields.get("CountryRegion")
+        if country_region:
+            print(
+                "Country/Region: {} has confidence: {}".format(
+                    country_region.value, country_region.confidence
+                )
+            )
+        region = id_document.fields.get("Region")
+        if region:
+            print(
+                "Region: {} has confidence: {}".format(region.value, region.confidence)
+            )
+
+if __name__ == "__main__":
+    analyze()
