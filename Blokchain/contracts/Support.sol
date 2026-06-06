@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0 and MIT
+// SPDX-License-Identifier: MIT AND GPL-3.0
 
 pragma experimental ABIEncoderV2;
 pragma solidity >=0.6;
