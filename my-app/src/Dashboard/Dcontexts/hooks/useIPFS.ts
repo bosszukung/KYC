@@ -3,9 +3,15 @@ import axios from "axios";
 import { Error } from "../../../unities";
 
 
-const authString = "2OQZPjQG12TxfQcrmk2ADaJ9m4x:f5b544cae003d88dfb8a0674dc57c184";
-const base64EncodedAuth = window.btoa(authString);
-const authorisation = "Basic " + base64EncodedAuth;
+// SECURITY: never hardcode credentials in frontend source.
+// These are read from build-time env vars (see .env.example). Note that any
+// value bundled into a React app is still visible to end users, so for real
+// production use the IPFS upload should be proxied through a trusted backend
+// that holds the Infura credentials server-side.
+const projectId = process.env.REACT_APP_INFURA_IPFS_PROJECT_ID ?? "";
+const projectSecret = process.env.REACT_APP_INFURA_IPFS_SECRET ?? "";
+const base64EncodedAuth = window.btoa(`${projectId}:${projectSecret}`);
+const authorization = "Basic " + base64EncodedAuth;
 
 
 export const useIPFS = () => {
@@ -15,7 +21,7 @@ export const useIPFS = () => {
       ipfs = create({
         url: "https://ipfs.infura.io:5001",
         headers: {
-          authorisation,
+          authorization,
         },
       });
     } catch (error) {
