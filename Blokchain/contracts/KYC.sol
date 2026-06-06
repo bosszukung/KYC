@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT and GPL-3.0
+// SPDX-License-Identifier: MIT AND GPL-3.0
 pragma experimental ABIEncoderV2;
 pragma solidity >=0.6;
 
@@ -77,7 +77,7 @@ contract KYC is Client, FI {
         );
         appearances.KYCRequest[] memory list = new appearances.KYCRequest[](pageLength);
         for (uint256 i = startIndex; i < endIndex; i++)
-        list[i] = forFI
+        list[i - startIndex] = forFI
         ? request[support.append(msg.sender, FItoClient[msg.sender][i])] 
         : request[support.append(ClienttoFI[msg.sender][i], msg.sender)];
         return(pages, list);
