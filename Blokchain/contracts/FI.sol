@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT and GPL-3.0
+// SPDX-License-Identifier: MIT AND GPL-3.0
 
 pragma experimental ABIEncoderV2;
 pragma solidity >=0.6.0; 
@@ -36,7 +36,7 @@ contract FI {
             ) = support.getIndexes(pageNumber, FIsList);
         appearances.FI[] memory Lists = new appearances.FI[](pageLength);
         for (uint256 i = startIndex; i < endIndex; i++)
-            Lists[i] = finance[FIsList[i]];
+            Lists[i - startIndex] = finance[FIsList[i]];
         return(pages, Lists);
     }
 
