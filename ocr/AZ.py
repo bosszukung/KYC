@@ -24,6 +24,9 @@ key = os.environ.get("FR_KEY", "")
 formUrl = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png"
 
 def analyze():
+    if not endpoint or not key:
+        raise ValueError("FR_ENDPOINT and FR_KEY environment variables must be set")
+    
     document_analysis_client = DocumentAnalysisClient(
             endpoint=endpoint, credential=AzureKeyCredential(key)
         )
