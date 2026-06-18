@@ -64,7 +64,7 @@
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
     "@types/json-schema": "^7.0.12",
-    "@types/node": "^20.3.1",
+    "@types/node": "^25.9.3",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/uuid": "^9.0.2"
   },
